@@ -2,7 +2,6 @@
 /**
  * Quietly Class
  * Where everything is put into action.
- * TODO: Coming soon -- oEmbed support
  * @package Quietly
  */
 
@@ -34,11 +33,10 @@ class Quietly {
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 			add_action( 'admin_notices', array( $this, 'admin_notices' ) );
 		}
-		wp_embed_register_handler( QUIETLY_WP_SLUG . '_url', QUIETLY_WP_EMBED_REGEX_URL, array( $this, 'embed_register_handler_url' ) );
-		wp_embed_register_handler( QUIETLY_WP_SLUG . '_share', QUIETLY_WP_EMBED_REGEX_SHARE, array( $this, 'embed_register_handler_share' ) );
+		wp_embed_register_handler( QUIETLY_WP_SLUG, QUIETLY_WP_EMBED_REGEX, array( $this, 'embed_register_handler' ) );
+		wp_oembed_add_provider( QUIETLY_WP_EMBED_REGEX, QUIETLY_WP_URL_OEMBED, true );
 		add_filter( 'get_the_excerpt', array( $this, 'flag_excerpt' ), 9 );
 		add_filter( 'get_the_excerpt', array( $this, 'unflag_excerpt' ), 11 );
-		add_filter( 'embed_oembed_html', array( $this, 'embed_oembed_html' ) );
 	}
 
 	/**
@@ -118,38 +116,23 @@ class Quietly {
 	}
 
 	/**
-	 * Registers the Quietly embed handler for regular url.
-	 * @since    1.0.0
-	 */
-	public function embed_register_handler_url( $matches, $attr, $url, $rawattr ) {
-		$embed = sprintf( QUIETLY_WP_EMBED_SCRIPT_URL, esc_attr( $matches[1] ), esc_attr( $matches[3] ) );
-		return apply_filters( 'embed_quietly_url', $embed, $matches, $attr, $url, $rawattr );
-	}
-
-	/**
 	 * Registers the Quietly embed handler for share url.
 	 * @since    1.0.0
 	 */
-	public function embed_register_handler_share( $matches, $attr, $url, $rawattr ) {
-		$embed = sprintf( QUIETLY_WP_EMBED_SCRIPT_SHARE, esc_attr( $matches[1] ), esc_attr( $matches[3] ) );
-		return apply_filters( 'embed_quietly_share', $embed, $matches, $attr, $url, $rawattr );
-	}
-
-	/**
-	 * Checks embed output, and removes plain HTML placeholder if the excerpt
-	 * flag is on to prevent unwanted text from the embed widget content.
-	 * @param    string $html       The embed html.
-	 * @param    string $url        The embed url.
-	 * @param    string $attr       The embed attributes.
-	 * @param    string $post_ID    The associated post id.
-	 * @return   string             The final embed output.
-	 */
-	public function embed_oembed_html( $html, $url = '', $attr = '', $post_ID = '' ) {
-		if ( true === Quietly::$is_excerpt ) {
-			// TODO: Check $html for div/aside with .quietly-widget-list preceding script element
-			// TODO: Trim the container and return $html
+	public function embed_register_handler( $matches, $attr, $url, $rawattr ) {
+		$embed = '';
+		$url = $matches[0];
+		if ( strpos( $url, 'maxheight=' ) === false ) {
+			// Override WordPress default maxheight
+			$attr['height'] = (int) ((int) $attr['width'] * 0.75);
 		}
-		return $html;
+		// Hide the list markups when showing in an excerpt
+		if ( true === Quietly::$is_excerpt ) {
+			$embed = '';
+		} else {
+			$embed = wp_oembed_get( $url, $attr );
+		}
+		return apply_filters( 'embed_quietly', $embed, $matches, $attr, $url, $rawattr );
 	}
 
 	/**
