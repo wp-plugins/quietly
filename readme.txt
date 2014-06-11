@@ -13,7 +13,7 @@ Embed Quietly lists on your Wordpress site.
 
 The Quietly WordPress plug-in allows you to quickly embed beautiful slideshows into your content.
 
-=Features=
+<strong>Features</strong>
 
 * Increase the visual nature of your articles with a beautiful slideshow widget.
 * Take advantage of the list trend without sacrificing your content.

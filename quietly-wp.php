@@ -3,7 +3,7 @@
  * Plugin Name: Quietly
  * Plugin URI:  http://wordpress.org/plugins/quietly
  * Description: The Quietly WordPress plug-in allows you to quickly embed beautiful slideshows into your content.
- * Version:     1.0.0
+ * Version:     1.1.0
  * Author:      Quietly Media, Inc.
  * Author URI:  http://quiet.ly
  * License:     GPL-2.0+
