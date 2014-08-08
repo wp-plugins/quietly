@@ -35,4 +35,7 @@
 			<strong>4.</strong> Preview or publish your post to see it in action.
 		</p>
 	</div>
+	<p>
+		<a href="<?php echo admin_url( 'plugins.php?page=' . QUIETLY_WP_SLUG ); ?>" class="button button-primary"><?php /* TRANSLATORS: plugin */ _e( 'Show Plugin Settings', QUIETLY_WP_SLUG ); ?></a>
+	</p>
 </div>
