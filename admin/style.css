@@ -2,6 +2,23 @@
  * Admin Styles
  */
 
+
+ /* Options page icon */
+ #icon-quietly {
+     background-image: url('../img/logo.png');
+     background-size: 32px 32px;
+ }
+
+/* Options page footer */
+ div.quietly-wp-admin__footer {
+ 	margin-top: 5px;
+ 	margin-bottom: 15px;
+ 	padding: 6px 20px;
+ 	background-color: #eeeeee;
+ 	background-color: rgba(255, 255, 255, 0.75);
+ }
+
+ /* Activation notice */
 div.quietly-wp-admin__activation-notice {
 	border-left: solid 4px #a26fff;
 	margin-top: 5px;

@@ -3,7 +3,7 @@ Contributors: quietlyapp
 Tags: plugin, social, post, widget, admin, Quietly, list, lists, item, items, embed, slideshow, carousel, love, save, share
 Requires at least: 3.6
 Tested up to: 3.9.1
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,9 @@ You can customize your widget from the share panel in the Quietly web app. Go to
 2. Simply copy the url of the Quietly list you want to embed and paste it into your post editor.
 
 == Changelog ==
+
+= 1.2 =
+* Added the option to automatically insert list description to post excerpts that only have a Quietly slideshow as the content
 
 = 1.1 =
 * Added Quietly oEmbed support
