@@ -1,9 +1,9 @@
 === Quietly ===
 Contributors: quietlyapp
-Tags: plugin, social, post, widget, admin, Quietly, list, lists, item, items, embed, slideshow, carousel, love, save, share
+Tags: plugin, social, post, widget, admin, Quietly, list, lists, item, items, embed, slideshow, carousel, love, save, share, publishing, map
 Requires at least: 3.6
-Tested up to: 3.9.1
-Stable tag: 1.2.0
+Tested up to: 4.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,45 +11,52 @@ Embed Quietly lists on your Wordpress site.
 
 == Description ==
 
-The Quietly WordPress plug-in allows you to quickly embed beautiful slideshows into your content.
+The Quietly WordPress plug-in allows you to quickly and easily embed your Quietly content (e.g. beautiful slideshows, maps, etc) into your WordPress website.
 
 <strong>Features</strong>
 
-* Increase the visual nature of your articles with a beautiful slideshow widget.
-* Take advantage of the list trend without sacrificing your content.
-* Keep the primary content above the fold.
-* Display Love, Share, and Save buttons on each item within the slideshow.
+* Engage your readers - increase the visual nature of your articles with a beautiful slideshow or map widget.
+* Improve your workflow – quickly browse and select lists from your Quietly account while writing your post.
+* Customize with ease – easily insert the list or further customize it within your post editor before embedding.
+* Preview in post – in WordPress 4.0, Quietly lists will show a visual preview right within your post editor.
 
-We’d love to hear from you. Email [welovefeedback@quiet.ly](mailto:welovefeedback@quiet.ly) to get in touch with us.
+Lean more about Quietly [here](http://www.quiet.ly/pro). Or email [welovefeedback@quiet.ly](mailto:welovefeedback@quiet.ly) to get in touch with us.
 
 == Installation ==
 
-1. Upload the `quietly-wordpress` folder to the `/wp-content/plugins/` directory
-1. Activate the plugin through the `Plugins` menu in WordPress
+1. Upload the `quietly` folder to the `/wp-content/plugins/` directory.
+1. Activate the plugin from the `Plugins` menu in the WordPress dashboard.
 
 == Frequently Asked Questions ==
 
 = What is Quietly? =
-Create and share lists with your friends. Discover and share the best of everything on Quietly.
+Quietly allows publishers to easily create lightweight content for their audiences in the form of customized slideshows, media carousels, and maps. Once the content is created in Quietly, they can embed it directly into their web properties. Other benefits include analytic insights, search engine optimization, and headline optimization. Our fully integrated WordPress plugin makes it even easier to engage your readers, increase traffic, and reward your readers. We’re developing new tools and formats every month.
 
 = How do I customize my embed widget? =
-You can customize your widget from the share panel in the Quietly web app. Go to the page for the list that you wish to embed, and click on the share button. In the "Share List" panel that opens, scroll down below the embed preview to see  settings such as showing/hiding item descriptions, adjusting widget size, and more. When you're done, simply copy the code under the "WordPress" tab in the text area below "Embed."
+* __From Quietly:__ Go to the list that you wish to embed, and click on _Customize and Embed_ to see publishing options. Once your desired settings have been set, select the _WordPress_ tab in the top right hand corner, then copy and paste the embed code into your site.
+* __Within Wordpress:__ Find the list by clicking the _Insert Quietly List_ button in the editor toolbar. Once selected, click _Customize_ to customize your list. Then click _Insert_ to embed the list into your post.
+
+To learn more about customization, view our [video tutorials](https://www.youtube.com/watch?v=3EboDQB5r4w&list=PLEDUVwz2J2SWYAAdeZ2JRU4-Wsi3p2uBo) or read more in our [knowledge base](https://quietly.uservoice.com/knowledgebase/articles/393995-customizing-your-carousel).
 
 == Screenshots ==
 
-1. A Quietly list widget in action. Treat your viewers with a visually engaging slideshow.
-2. Simply copy the url of the Quietly list you want to embed and paste it into your post editor.
+1. A Quietly list embed widget in action. Treat your viewers with a visually engaging slideshow.
+2. Or display your list of locations in an interactive map.
+3. Easily insert your list or further customize it within your post editor before embedding.
 
 == Changelog ==
 
-= 1.2 =
-* Added the option to automatically insert list description to post excerpts that only have a Quietly slideshow as the content
+= 1.3.0 =
+* Added the ability to browse and insert lists from your Quietly account within the WordPress post editor.
 
-= 1.1 =
-* Added Quietly oEmbed support
-* Quietly embed enhances your SEO (list content is generated for search engines)
+= 1.2.0 =
+* Added the option to automatically insert list description to post excerpts that only have a Quietly slideshow as the content.
 
-= 1.0 =
+= 1.1.0 =
+* Added Quietly oEmbed support.
+* Quietly embed enhances your SEO (list content is generated for search engines).
+
+= 1.0.0 =
 * Initial release.
 
 == Upgrade Notice ==
