@@ -33,8 +33,10 @@
 		    	apiUrl: window.quietlyWP.apiUrl,
 		    	siteUrl: window.location.protocol + '//' + window.location.hostname + ((window.location.port !== 80 && window.location.port > 0) ? ':' + window.location.port : ''),
 		    	nonce: window.quietlyWP.nonce,
-		    	hasToken: (window.quietlyWP.hasToken === 'true')
+		    	hasToken: (window.quietlyWP.hasToken === 'true'),
+		    	apiToken: window.quietlyWP.apiToken || ''
 		    });
+		    delete window.quietlyWP.apiToken;
 		    // Whitelist
 		    $sceDelegateProvider.resourceUrlWhitelist([
 				'self',

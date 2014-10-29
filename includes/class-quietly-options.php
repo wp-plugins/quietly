@@ -10,17 +10,23 @@ class QuietlyOptions {
 	 * The default settings for the plugin.
 	 * @var       array
 	 */
-	protected static $options_default = array(
-		'show_description_in_excerpts' => true,
-		'api_token' => ''
+	public static $options_default = array(
+		'api_token' => '',
+		'show_description_in_excerpts' => true
 	);
 
 	/**
 	 * Creates the plugin options if it doesn't exist.
 	 */
 	public static function create_options() {
-		if( false == get_option( QUIETLY_WP_SLUG_OPTIONS ) ) {
+		$options = get_option( QUIETLY_WP_SLUG_OPTIONS );
+		if( false === $options ) {
+			// Create options
 			add_option( QUIETLY_WP_SLUG_OPTIONS, self::$options_default );
+		} else {
+			// Merge options
+			$options = array_merge( self::$options_default, $options );
+			update_option( QUIETLY_WP_SLUG_OPTIONS, $options );
 		}
 	}
 

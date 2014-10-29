@@ -109,16 +109,14 @@ class QuietlySettings {
 	 */
 	public function validate( $input ) {
 		$options = get_option( QUIETLY_WP_SLUG_OPTIONS );
-		$is_options_screen = 'options' == get_current_screen()->id;
-		if ( false == $options) {
-			// Set options to default if they don't exist
-			$options = $this->$options_default;
+		$is_options_screen = ( 'options' === get_current_screen()->id );
+		if ( false === $options ) {
+			$options = QuietlyOptions::$options_default;
 		} else {
 
 			// API token
 			$key = 'api_token';
-			if( isset( $input[ $key ] ) &&
-				strlen( $input[ $key ] ) > 10 ) {
+			if( isset( $input[ $key ] ) ) {
 				if ( strlen( $input[ $key ] ) > 10 ) {
 					// Update value
 					if ( $options[ $key ] != $input[ $key ] ) {
@@ -127,25 +125,25 @@ class QuietlySettings {
 						}
 						$options[ $key ] = esc_html( $input[ $key ] );
 					}
-				} else {
+				} else if ( strlen ( $input[ $key ] ) > 0) {
 					// Invalid
 					if ( $is_options_screen ) {
 						add_settings_error( QUIETLY_WP_SLUG_OPTIONS, 'invalid-api-token', /* TRANSLATORS: settings */ __( 'You have entered an invalid API token.', QUIETLY_WP_SLUG ) );
 					}
+				} else {
+					// Unset
+					if ( $is_options_screen ) {
+						add_settings_error( QUIETLY_WP_SLUG_OPTIONS, 'updated-api-token', /* TRANSLATORS: settings */ __( 'API token has been removed. Certain features of the plugin are disabled.', QUIETLY_WP_SLUG ), 'updated' );
+					}
+					$options[ $key ] = '';
 				}
-			} else {
-				// Unset
-				if ( $is_options_screen ) {
-					add_settings_error( QUIETLY_WP_SLUG_OPTIONS, 'updated-api-token', /* TRANSLATORS: settings */ __( 'API token has been removed. Certain features of the plugin are disabled.', QUIETLY_WP_SLUG ), 'updated' );
-				}
-				$options[ $key ] = '';
 			}
 
 			// Show description in excerpts
 			$key = 'show_description_in_excerpts';
 			if ( isset( $input[ $key ] ) ) {
 				// Turn on
-				if ( ! $options[ $key ] ) {
+				if ( $options[ $key ] === false) {
 					$options[ $key ] = true;
 					if ( $is_options_screen ) {
 						add_settings_error( QUIETLY_WP_SLUG_OPTIONS, 'updated-show-description-in-excerpts', /* TRANSLATORS: settings */ __( 'List description will now show in post excerpts with a Quietly embed.', QUIETLY_WP_SLUG ), 'updated' );
@@ -153,7 +151,7 @@ class QuietlySettings {
 				}
 			} else {
 				// Turn off
-				if ( $options[ $key ] ) {
+				if ( $options[ $key ] === true ) {
 					$options[ $key ] = false;
 					if ( $is_options_screen ) {
 						add_settings_error( QUIETLY_WP_SLUG_OPTIONS, 'updated-show-description-in-excerpts', /* TRANSLATORS: settings */ __( 'List description will no longer show in post excerpts with a Quietly embed.', QUIETLY_WP_SLUG ), 'updated' );
@@ -175,7 +173,7 @@ class QuietlySettings {
 			<?php /* TRANSLATORS: settings */ _e( 'This token is required for the plugin to communicate with your Quietly account. It is not mandatory for displaying a Quietly embed in your posts.', QUIETLY_WP_SLUG ); ?>
 		</p>
 		<p>
-			<a href class="quietly-btn-get-api-token button-large button"><?php /* TRANSLATORS: settings */ _e( 'Get API Token', QUIETLY_WP_SLUG ); ?></a>
+			<a href class="quietly-btn-get-api-token button"><?php /* TRANSLATORS: settings */ _e( 'Get API Token', QUIETLY_WP_SLUG ); ?></a>
 		</p>
 <?php
 	}

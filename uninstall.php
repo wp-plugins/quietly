@@ -8,4 +8,4 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-delete_option( QUIETLY_WP_OPTIONS_SLUG );
+delete_option( QUIETLY_WP_SLUG_OPTIONS );

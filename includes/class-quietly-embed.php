@@ -43,6 +43,7 @@ class QuietlyEmbed {
 		// Register excerpt detection
 		add_filter( 'get_the_excerpt', array( $this, 'flag_excerpt' ), 0 );
 		add_filter( 'get_the_excerpt', array( $this, 'unflag_excerpt' ), 99 );
+		add_action( 'wp_footer', array( $this, 'display_footer' ) );
 	}
 
 	/**
@@ -98,6 +99,13 @@ class QuietlyEmbed {
 			$this->embed_descriptions = array();
 		}
 		return apply_filters( 'wp_trim_excerpt', $text, $text );
+	}
+
+	/**
+	 * Displays plugin info in the footer.
+	 */
+	public function display_footer() {
+		echo '<!-- QWP v' . QUIETLY_WP_VERSION . ' -->' . "\r\n";
 	}
 
 }

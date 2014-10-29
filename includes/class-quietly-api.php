@@ -121,7 +121,7 @@ class QuietlyAPI {
 			! current_user_can( 'edit_pages' ) ||
 			! current_user_can( 'publish_posts' ) ||
 			! current_user_can( 'publish_pages' ) ) {
-			return $this->get_error_response( 403, 'nonce' );
+			return $this->get_error_response( 403, 'Invalid nonce.' );
 		}
 
 		// Make the request

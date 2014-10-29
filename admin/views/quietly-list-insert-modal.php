@@ -77,7 +77,8 @@
 								ng-show="options.error === 'unknown'">
 								Bummer, there was a problem getting your awesome lists.
 								<br><br>
-								<a href="open()" class="button-large button-primary button">
+								<a href class="button-large button-primary button"
+									ng-click="open()">
 									Try Again
 								</a>
 							</p>
@@ -140,22 +141,22 @@
 
 				<div class="quietly-wp-list-insert__footer submitbox">
 					<div class="quietly-wp-list-insert__footer-wrap clearfix">
-						<a href="" class="quietly-wp-list-insert__btn-primary button-large button-primary button"
-							ng-class="{ 'button-disabled': !selectedList }"
+						<button class="quietly-wp-list-insert__btn-primary button-large button-primary button"
+							ng-disabled="!selectedList"
 							ng-click="customizeList()"
 							ng-show="options.view === 'insert'">
 							Customize
-						</a>
-						<a href class="quietly-wp-list-insert__btn-primary button-large button-primary button"
-							ng-class="{ 'button-disabled': !selectedList }"
+						</button>
+						<button class="quietly-wp-list-insert__btn-primary button-large button-primary button"
+							ng-disabled="!selectedList"
 							ng-click="insertList()">
 							Insert
-						</a>
-						<a href class="quietly-wp-list-insert__btn-primary button-large button"
+						</button>
+						<button class="quietly-wp-list-insert__btn-primary button-large button"
 							ng-click="open()"
 							ng-show="options.view === 'customize'">
 							Back
-						</a>
+						</button>
 						<a href class="quietly-wp-list-insert__btn-cancel submitdelete"
 							ng-click="close()">
 							Cancel

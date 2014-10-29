@@ -46,8 +46,8 @@ class QuietlyListInsert {
 	 */
 	public function enqueue_scripts() {
 		$screen = get_current_screen()->id;
-		$has_token = QuietlyOptions::get_option( 'api_token' );
-		if ( ! empty( $has_token ) ) {
+		$api_token = QuietlyOptions::get_option( 'api_token' );
+		if ( ! empty( $api_token ) ) {
 			$has_token = 'true';
 		} else {
 			$has_token = 'false';
@@ -65,7 +65,8 @@ class QuietlyListInsert {
 					'quietlyUrl' => QUIETLY_WP_URL,
 					'apiUrl' => admin_url( 'admin-ajax.php' ),
 					'nonce' => wp_create_nonce( QUIETLY_WP_SLUG . '_api_call' ),
-					'hasToken' => $has_token
+					'hasToken' => $has_token,
+					'apiToken' => $api_token
 				)
 			);
 		}

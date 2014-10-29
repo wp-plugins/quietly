@@ -14,7 +14,13 @@
 	 */
 	app.controller('ListInsertCtrl', function($scope, $filter, config, api) {
 
-		var logPrefix = '[Quietly List Insert] ';
+		var logPrefix = '[Quietly List Insert] ',
+			codeTemplate = '[embed]http:' + config.quietlyUrl + '/list/share/$1[/embed]',
+			publishingOptionsUrl = config.quietlyUrl + '/publishing/',
+			loginUrl = config.quietlyUrl + '/api_token_login?api_token=' + config.apiToken + '&url=',
+			listPlaceholder = config.pluginUrl + 'images/empty.png',
+			profilePlaceholder = config.pluginUrl + 'images/placeholder-profile.png';
+
 		/**
 		 * Options model.
 		 * @type {Object}
@@ -27,12 +33,8 @@
 			error: '',
 			view: 'insert',
 			embedCode: '',
-			codeTemplate: '[embed]http:' + config.quietlyUrl + '/list/share/$1[/embed]',
-			publishingOptionsUrl: config.quietlyUrl + '/publishing/',
 			listsSearch: '',
-			listsFilter: '',
-			listPlaceholder: config.pluginUrl + 'images/empty.png',
-			profilePlaceholder: config.pluginUrl + 'images/placeholder-profile.png'
+			listsFilter: ''
 		};
 
 		/**
@@ -78,6 +80,7 @@
 		$scope.open = function(refresh){
 			$scope.options.show = true;
 			$scope.options.view = 'insert';
+			$scope.options.error = '';
 			if (refresh && refresh === true) {
 				$scope.options.isLoaded = false;
 			}
@@ -95,21 +98,19 @@
 					// Parse lists model
 					$scope.lists = data.data.lists;
 					angular.forEach($scope.lists, function(list) {
-						list._previewImage = list.thumbnailImage || $scope.options.listPlaceholder;
+						list._previewImage = list.thumbnailImage || listPlaceholder;
 						if (list.shareId) {
-							list._code = $scope.options.codeTemplate.replace('$1', list.shareId);
+							list._code = codeTemplate.replace('$1', list.shareId);
 						}
-						console.log(list._code, list.shareId);
 					});
 					// Parse member model
 					$scope.member = data.data.member;
-					$scope.member._thumbnailImage = $scope.member.thumbnailImage || $scope.options.profilePlaceholder;
+					$scope.member._thumbnailImage = $scope.member.thumbnailImage || profilePlaceholder;
 					$scope.member._url = ($scope.member.memberId) ? config.quietlyUrl + '/' + $scope.member.memberId : '#';
 					$scope.options.isProcessing = false;
 					$scope.options.isLoaded = true;
 					$scope.options.error = '';
 				}, function(data, status) {
-					console.log(data, status);
 					$scope.options.isProcessing = false;
 					if (status === 403) {
 						$scope.options.error = '403';
@@ -132,7 +133,7 @@
 		 * @return {string} The url.
 		 */
 		$scope.getPublishingOptionsUrl = function() {
-			return $scope.options.publishingOptionsUrl + $scope.selectedList.listId + '?is_wordpress=true&origin=' + encodeURIComponent(config.siteUrl);
+			return loginUrl + encodeURIComponent(publishingOptionsUrl + $scope.selectedList.listId + '?is_wordpress=true&origin=' + config.siteUrl);
 		};
 
 		/**
@@ -241,7 +242,6 @@
 							data.code &&
 							data.code.length) {
 							scope.options.embedCode = data.code;
-							console.log('WP! code', scope.options.embedCode);
 							scope.$apply();
 						}
 					}

@@ -11,7 +11,8 @@
 
 /* ng-show fade */
 .quietly-wp-ng-show-fade {
-  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+          transition: all 0.25s;
   opacity: 1; }
   .quietly-wp-ng-show-fade.ng-hide-add, .quietly-wp-ng-show-fade.ng-hide-remove {
     display: block !important; }
@@ -19,40 +20,53 @@
     opacity: 0; }
 
 /**
- * Activation Notice
+ * Notice
  */
-div.quietly-wp-admin__activation-notice {
+div.quietly-wp-admin__notice {
   border-left: solid 4px #a26fff;
   margin-top: 5px;
   margin-bottom: 15px;
-  padding-left: 12px;
-  padding-right: 0;
-  webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+  padding: 6px 12px;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1); }
 
-.quietly-wp-admin__activation-notice-step {
+.quietly-wp-admin__notice-step {
   display: inline-block;
   margin-right: 12px;
   margin-bottom: 10px;
   max-width: 220px;
   vertical-align: top; }
 
-div.quietly-wp-admin__activation-notice-step > img {
+div.quietly-wp-admin__notice-step > img {
   box-sizing: border-box;
   width: 100%;
   height: auto;
   border-radius: 3px;
   border: solid 1px rgba(225, 225, 225, 0.8); }
 
-div.quietly-wp-admin__activation-notice-step-caption {
+div.quietly-wp-admin__notice-step-caption {
   margin-top: 0.25em;
   margin-bottom: 0.5em; }
+
+/* Activation notice */
+div.quietly-wp-admin__activation-notice {
+  box-sizing: border-box;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  padding: 6px 12px;
+  border: solid 3px #a26fff;
+  border-radius: 0;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f8f4ff;
+  background-image: url('../images/activation-notice-bg');
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-size: 100px 100px; }
 
 /**
  * Settings Screen
  */
 #icon-quietly {
-  background-image: url('../img/logo.png');
+  background-image: url('../images/logo.png');
   background-size: 32px 32px; }
 
 .quietly-wp-admin__footer {
@@ -234,7 +248,8 @@ div.quietly-wp-admin__activation-notice-step-caption {
         clear: both; } }
 
 .quietly-wp-list-insert__grid-item-wrap {
-  transition: outline 0.125s linear;
+  -webkit-transition: outline 0.125s linear;
+          transition: outline 0.125s linear;
   box-sizing: border-box;
   outline: solid 1px #dfdfdf;
   padding-right: 15px;
