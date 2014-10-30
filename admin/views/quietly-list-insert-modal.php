@@ -133,7 +133,7 @@
 						<h1 class="quietly-wp-list-insert__header-title">Customize Quietly Embed</h1>
 					</div>
 					<div class="quietly-wp-list-insert__grid quietly-wp-list-insert__stretch">
-						<iframe width="100%" height="100%" frameborder="0"
+						<iframe width="100%" height="100%" frameborder="0" allowfullscreen
 							ng-src="{{ getPublishingOptionsUrl() }}"
 							ng-if="options.view === 'customize' && selectedList"></iframe>
 					</div>

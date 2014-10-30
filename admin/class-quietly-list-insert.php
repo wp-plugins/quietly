@@ -59,7 +59,7 @@ class QuietlyListInsert {
 			wp_enqueue_script( QUIETLY_WP_SLUG . '-admin-angular' );
 			wp_enqueue_script( QUIETLY_WP_SLUG . '-admin-api' );
 			wp_enqueue_script( QUIETLY_WP_SLUG . '-admin-list-insert' );
-			wp_localize_script( QUIETLY_WP_SLUG . '-admin-list-insert', QUIETLY_WP_SLUG . 'WP',
+			wp_localize_script( QUIETLY_WP_SLUG . '-admin-angular', QUIETLY_WP_SLUG . 'WP',
 				array(
 					'pluginUrl' => QUIETLY_WP_PATH_ABS,
 					'quietlyUrl' => QUIETLY_WP_URL,

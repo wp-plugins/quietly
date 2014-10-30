@@ -3,7 +3,7 @@ Contributors: quietlyapp
 Tags: plugin, social, post, widget, admin, Quietly, list, lists, item, items, embed, slideshow, carousel, love, save, share, publishing, map
 Requires at least: 3.6
 Tested up to: 4.0
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,10 @@ To learn more about customization, view our [video tutorials](https://www.youtub
 3. Easily insert your list or further customize it within your post editor before embedding.
 
 == Changelog ==
+
+= 1.3.2 =
+* Fixed insert modal breaking due to required data not being enqueued properly.
+* Fixed fullscreen not working for embeds in the customization stage.
 
 = 1.3.1 =
 * Fixed an error when saving plugin settings.
