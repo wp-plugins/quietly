@@ -22,7 +22,7 @@
 							<div class="quietly-wp-list-insert__user-body">
 								Showing lists from <a href="{{ member._url }}" class="quietly-wp-list-insert__user-name" target="_blank" alt="View Quietly profile">{{ member.name }}</a>
 								<br>
-								<a href="<?php echo admin_url( 'plugins.php?page=' . QUIETLY_WP_SLUG . '#change_token' ); ?>">Not you?</a>
+								<a href="<?php echo admin_url( 'admin.php?page=' . QUIETLY_WP_SLUG . '#change_token' ); ?>">Not you?</a>
 							</div>
 						</div>
 						<h1 class="quietly-wp-list-insert__header-title">Insert Quietly List</h1>
@@ -61,7 +61,7 @@
 								ng-show="!options.hasToken">
 								Please connect with your Quietly account in the plugin settings.
 								<br><br>
-								<a href="<?php echo admin_url( 'plugins.php?page=' . QUIETLY_WP_SLUG ); ?>" class="button-large button-primary button">
+								<a href="<?php echo admin_url( 'admin.php?page=' . QUIETLY_WP_SLUG ); ?>" class="button-large button-primary button">
 									View Plugin Settings
 								</a>
 							</p>
@@ -87,7 +87,7 @@
 								ng-show="options.error === '403'">
 								Your API token is invalid. Please obtain a new one.
 								<br><br>
-								<a href="<?php echo admin_url( 'plugins.php?page=' . QUIETLY_WP_SLUG ); ?>#change_token" class="button-large button-primary button">
+								<a href="<?php echo admin_url( 'admin.php?page=' . QUIETLY_WP_SLUG ); ?>#change_token" class="button-large button-primary button">
 									Get New API Token
 								</a>
 							</p>
@@ -96,7 +96,7 @@
 								ng-show="options.isLoaded && !lists.length">
 								You don't have any lists on Quietly.
 								<br><br>
-								<a href="<?php echo QUIETLY_WP_URL . '/list/create'; ?>" target="_blank" class="button-large button-primary button">
+								<a href="<?php echo '//' . QUIETLY_WP_URL . '/list/create'; ?>" target="_blank" class="button-large button-primary button">
 									Compose a List
 								</a>
 								<a href class="button-large button"
@@ -132,7 +132,7 @@
 					<div class="quietly-wp-list-insert__header">
 						<h1 class="quietly-wp-list-insert__header-title">Customize Quietly Embed</h1>
 					</div>
-					<div class="quietly-wp-list-insert__grid quietly-wp-list-insert__stretch">
+					<div class="quietly-wp-list-insert__grid--locked quietly-wp-list-insert__grid quietly-wp-list-insert__stretch">
 						<iframe width="100%" height="100%" frameborder="0" allowfullscreen
 							ng-src="{{ getPublishingOptionsUrl() }}"
 							ng-if="options.view === 'customize' && selectedList"></iframe>
@@ -150,7 +150,7 @@
 						<button class="quietly-wp-list-insert__btn-primary button-large button-primary button"
 							ng-disabled="!selectedList"
 							ng-click="insertList()">
-							Insert
+							Insert {{ settings.embedType }}
 						</button>
 						<button class="quietly-wp-list-insert__btn-primary button-large button"
 							ng-click="open()"

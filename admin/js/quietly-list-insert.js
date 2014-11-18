@@ -9,13 +9,23 @@
 
 	if (!angular || !app) { return; }
 
+	// Bind insert button click handler
+	$('#quietly-wp-btn-insert-list').on('click', function handleInsertButtonClick(event) {
+		var evt = document.createEvent('CustomEvent');
+		evt.initCustomEvent('quietly', false, false, {
+			action: 'openListInsertModal'
+		});
+		document.body.dispatchEvent(evt);
+		event.preventDefault();
+	});
+
 	/**
 	 * List Insert Controller
 	 */
-	app.controller('ListInsertCtrl', function($scope, $filter, config, api) {
+	app.controller('ListInsertCtrl', function($scope, $filter, config, api, logger) {
 
 		var logPrefix = '[Quietly List Insert] ',
-			codeTemplate = '[embed]http:' + config.quietlyUrl + '/list/share/$1[/embed]',
+			codeTemplate = 'http:' + config.quietlyUrl + '/list/share/$1',
 			publishingOptionsUrl = config.quietlyUrl + '/publishing/',
 			loginUrl = config.quietlyUrl + '/api_token_login?api_token=' + config.apiToken + '&url=',
 			listPlaceholder = config.pluginUrl + 'images/empty.png',
@@ -62,6 +72,15 @@
 		$scope.selectedList = null;
 
 		/**
+		 * Embed settings model.
+		 * @type {Object}
+		 */
+		$scope.settings = {
+			embedType: 'Embed',
+			params: ''
+		};
+
+		/**
 		 * Initializes the controller.
 		 */
 		$scope.init = function() {
@@ -72,6 +91,37 @@
 					status: $scope.options.listsFilter
 				}), '-modified');
 			});
+		};
+
+		/**
+		 * Parse embed settings saved on Quietly.
+		 * @param {string} settings - The settings string.
+		 */
+		$scope.parseSettings = function(settings) {
+			var params = [],
+				param = [],
+				typeId = 0,
+				i = 0;
+			params = settings.split('/');
+			if (params[0].length !== 1) {
+				params.unshift('0');
+			}
+			typeId = parseInt(params[0], 10) || 0;
+			for (i = 1; i < params.length; i++) {
+				if (typeId === (i - 1)) {
+					param = params[i].split('?');
+					if (param.length > 1) {
+						$scope.settings.embedType = param[0];
+						$scope.settings.params = param[1];
+					} else {
+						// Fallback for old settings string
+						$scope.settings.embedType = 'Embed';
+						$scope.settings.params = param[0];
+					}
+					break;
+				}
+			}
+			logger.log('Parsing settings:', settings);
 		};
 
 		/**
@@ -86,6 +136,7 @@
 			}
 			if ($scope.options.hasToken && !$scope.options.isLoaded && !$scope.options.isProcessing) {
 				$scope.options.isProcessing = true;
+				// Get member, lists, and embed settings data
 				api.post('quietly_api_get_lists', {}, function(data) {
 					if (!data.data ||
 						!angular.isArray(data.data.lists) ||
@@ -107,6 +158,12 @@
 					$scope.member = data.data.member;
 					$scope.member._thumbnailImage = $scope.member.thumbnailImage || profilePlaceholder;
 					$scope.member._url = ($scope.member.memberId) ? config.quietlyUrl + '/' + $scope.member.memberId : '#';
+					// Parse settings model
+					if (data.data.settings && data.data.settings.value) {
+						$scope.parseSettings(data.data.settings.value);
+						$scope.settings.params = encodeURIComponent($scope.settings.params);
+					}
+					// Settle down
 					$scope.options.isProcessing = false;
 					$scope.options.isLoaded = true;
 					$scope.options.error = '';
@@ -143,7 +200,7 @@
 		 */
 		$scope.selectList = function(list) {
 			$scope.selectedList = list || null;
-			$scope.options.embedCode = $scope.selectedList._code || '';
+			$scope.options.embedCode = '[embed]' + ($scope.selectedList._code || '') + (($scope.settings.params) ? '?' + $scope.settings.params : '') + '[/embed]';
 			return $scope.selectedList;
 		};
 
@@ -177,6 +234,10 @@
 		$scope.insertIntoEditor = function(text) {
 			if(tinyMCE && tinyMCE.activeEditor) {
 				tinyMCE.activeEditor.execCommand('mceInsertContent', false, text);
+				return true;
+			} else {
+				// Insert into Quicktags editor
+				edInsertContent(false, text); // jshint ignore:line
 				return true;
 			}
 			return false;
@@ -240,8 +301,11 @@
 						if (data.action &&
 							data.action === 'code' &&
 							data.code &&
-							data.code.length) {
+							data.code.length &&
+							data.settings &&
+							data.settings.length) {
 							scope.options.embedCode = data.code;
+							scope.parseSettings(data.settings);
 							scope.$apply();
 						}
 					}

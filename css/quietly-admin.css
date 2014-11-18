@@ -63,6 +63,17 @@ div.quietly-wp-admin__activation-notice {
   background-size: 100px 100px; }
 
 /**
+ * Editor Elements
+ */
+.quietly-wp-admin__btn-add {
+  margin-top: -3px;
+  margin-left: -2px;
+  padding-left: 0 !important;
+  padding-right: 4px !important;
+  width: auto;
+  height: 74%; }
+
+/**
  * Settings Screen
  */
 #icon-quietly {
@@ -72,7 +83,8 @@ div.quietly-wp-admin__activation-notice {
 .quietly-wp-admin__footer {
   margin-top: 5px;
   margin-bottom: 15px;
-  padding: 6px 20px;
+  padding: 3px 16px;
+  border: solid 2px #f1f1f1;
   background-color: #eeeeee;
   background-color: rgba(255, 255, 255, 0.75); }
 
@@ -202,6 +214,9 @@ div.quietly-wp-admin__activation-notice {
 .quietly-wp-list-insert__grid {
   overflow-x: hidden;
   overflow-y: auto; }
+
+.quietly-wp-list-insert__grid--locked {
+  overflow-y: hidden; }
 
 .quietly-wp-list-insert__grid-content {
   padding: 10px; }

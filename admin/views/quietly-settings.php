@@ -88,7 +88,14 @@ if ( ! empty( $has_token ) ) {
 	<!-- Footer -->
 	<div class="quietly-wp-admin__footer">
 		<p>
-			Found a bug or have a feature request? Don't hesistate to contact us at <a href="mailto:welovefeedback@quiet.ly">welovefeedback@quiet.ly</a>!
+			Like our plugin? <a href="https://wordpress.org/support/view/plugin-reviews/quietly" target="_blank">Leave a rating</a> and let the world know! We would be forever grateful :)<br>
+			Found a bug or have a feature request? Shoot us an email at <a href="mailto:welovefeedback@quiet.ly">welovefeedback@quiet.ly</a>.
+		</p>
+		<p>
+			<strong>Resources:</strong> <a href="https://quietly.uservoice.com/knowledgebase/articles/394005-troubleshooting" target="_blank">Troubleshooting Guide</a> | <a href="https://quietly.uservoice.com" target="_blank">Knowledge Base</a> | <a href="https://wordpress.org/plugins/quietly/" target="_blank">Plugin Website</a> | <a href="http://www.quiet.ly" target="_blank">Quietly</a>
+		</p>
+		<p>
+			<strong>Plugin version:</strong> <?php echo QUIETLY_WP_VERSION; ?><br>
 		</p>
 	</div>
 </div>

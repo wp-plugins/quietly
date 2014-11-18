@@ -28,21 +28,7 @@
 			this.pluginUrl = url.substring(0, url.lastIndexOf('/'));
 			this.pluginUrl = this.pluginUrl.substring(0, this.pluginUrl.lastIndexOf('/') + 1);
 
-			// Register insert list command
-			ed.addCommand('quietly_insert_cmd', function() {
-				var evt = document.createEvent('CustomEvent');
-				evt.initCustomEvent('quietly', false, false, {
-					action: 'openListInsertModal'
-				});
-				document.body.dispatchEvent(evt);
-			});
-
-			// Register "Insert Quietly List" button
-			ed.addButton('quietly_insert', {
-				title: 'Insert Quietly List',
-				cmd: 'quietly_insert_cmd',
-				image: this.pluginUrl + 'images/tinymce-btn-insert.png'
-			});
+			// TODO: More stuffs here someday...
 
 		},
 

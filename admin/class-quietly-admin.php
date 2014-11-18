@@ -23,7 +23,7 @@ class QuietlyAdmin {
 	 * Initializes the object.
 	 */
 	public function __construct() {
-		array_push( $this->admin_screens, 'plugins_page_' . QUIETLY_WP_SLUG );
+		array_push( $this->admin_screens, 'toplevel_page_' . QUIETLY_WP_SLUG );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_action( 'admin_notices', array( $this, 'add_activation_notice' ) );
 		add_filter( 'plugin_action_links_' . QUIETLY_WP_PATH_BASENAME, array( $this, 'add_plugin_action_link' ));
@@ -34,6 +34,8 @@ class QuietlyAdmin {
 	 */
 	public function enqueue_scripts() {
 		$screen = get_current_screen()->id;
+		wp_register_style( QUIETLY_WP_SLUG . '-admin-menu', QUIETLY_WP_PATH_ABS . 'css/quietly-admin-menu.css', array(), QUIETLY_WP_VERSION );
+		wp_enqueue_style( QUIETLY_WP_SLUG . '-admin-menu' );
 		if ( in_array( $screen, $this->admin_screens ) ) {
 			wp_register_style( QUIETLY_WP_SLUG . '-admin', QUIETLY_WP_PATH_ABS . 'css/quietly-admin.css', array(), QUIETLY_WP_VERSION );
 			wp_enqueue_style( QUIETLY_WP_SLUG . '-admin' );
@@ -60,7 +62,7 @@ class QuietlyAdmin {
 	 * @return    array
 	 */
 	public function add_plugin_action_link( $links ) {
-		$settings_link = '<a href="' . admin_url( 'plugins.php?page=' . QUIETLY_WP_SLUG ) . '">' . /* TRANSLATORS: plugin */ __( 'Settings', QUIETLY_WP_SLUG ) . '</a>';
+		$settings_link = '<a href="' . admin_url( 'admin.php?page=' . QUIETLY_WP_SLUG ) . '">' . /* TRANSLATORS: plugin */ __( 'Settings', QUIETLY_WP_SLUG ) . '</a>';
 		array_push( $links, $settings_link );
 		return $links;
 	}

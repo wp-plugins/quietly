@@ -3,7 +3,7 @@ Contributors: quietlyapp
 Tags: plugin, social, post, widget, admin, Quietly, list, lists, item, items, embed, slideshow, carousel, love, save, share, publishing, map
 Requires at least: 3.6
 Tested up to: 4.0
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,7 +15,7 @@ The Quietly WordPress plug-in allows you to quickly and easily embed your Quietl
 
 <strong>Features</strong>
 
-* Engage your readers - increase the visual nature of your articles with a beautiful slideshow or map widget.
+* Engage your readers – increase the visual nature of your articles with a beautiful slideshow or map widget.
 * Improve your workflow – quickly browse and select lists from your Quietly account while writing your post.
 * Customize with ease – easily insert the list or further customize it within your post editor before embedding.
 * Preview in post – in WordPress 4.0, Quietly lists will show a visual preview right within your post editor.
@@ -38,6 +38,9 @@ Quietly allows publishers to easily create lightweight content for their audienc
 
 To learn more about customization, view our [video tutorials](https://www.youtube.com/watch?v=3EboDQB5r4w&list=PLEDUVwz2J2SWYAAdeZ2JRU4-Wsi3p2uBo) or read more in our [knowledge base](https://quietly.uservoice.com/knowledgebase/articles/393995-customizing-your-carousel).
 
+= Troubleshooting =
+Having issues with the plugin? Please check out our [troubleshooting guide](https://quietly.uservoice.com/knowledgebase/articles/394005-troubleshooting).
+
 == Screenshots ==
 
 1. A Quietly list embed widget in action. Treat your viewers with a visually engaging slideshow.
@@ -45,6 +48,10 @@ To learn more about customization, view our [video tutorials](https://www.youtub
 3. Easily insert your list or further customize it within your post editor before embedding.
 
 == Changelog ==
+
+= 1.3.3 =
+* Remember last settings when inserting an embed.
+* Insert list button and plugin settings menu item are more prominent.
 
 = 1.3.2 =
 * Fixed insert modal breaking due to required data not being enqueued properly.

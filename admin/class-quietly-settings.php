@@ -63,12 +63,13 @@ class QuietlySettings {
 	 * Register the administration menu.
 	 */
 	public function add_plugin_admin_menu() {
-		$this->settings_screen = add_plugins_page(
+		$this->settings_screen = add_menu_page(
 			'Quietly Plugin',
 			'Quietly',
 			'edit_plugins',
 			QUIETLY_WP_SLUG,
-			array( $this, 'display_plugin_admin_page' )
+			array( $this, 'display_plugin_admin_page' ),
+			'none'
 		);
 	}
 
@@ -96,7 +97,8 @@ class QuietlySettings {
 			wp_enqueue_script( QUIETLY_WP_SLUG . '-admin-settings' );
 			wp_localize_script( QUIETLY_WP_SLUG . '-admin-settings', QUIETLY_WP_SLUG . 'WP',
 				array(
-					'quietlyUrl' => QUIETLY_WP_URL
+					'quietlyUrl' => QUIETLY_WP_URL,
+					'debug' => QUIETLY_WP_DEBUG ? true : false
 				)
 			);
 		}

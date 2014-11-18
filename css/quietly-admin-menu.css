@@ -1,0 +1,8 @@
+/**
+ * Quietly Plugin Admin Menu
+ */
+#toplevel_page_quietly .wp-menu-image {
+  background-image: url('../images/logo.png');
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center center; }

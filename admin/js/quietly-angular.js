@@ -34,7 +34,8 @@
 		    	siteUrl: window.location.protocol + '//' + window.location.hostname + ((window.location.port !== 80 && window.location.port > 0) ? ':' + window.location.port : ''),
 		    	nonce: window.quietlyWP.nonce,
 		    	hasToken: (window.quietlyWP.hasToken === 'true'),
-		    	apiToken: window.quietlyWP.apiToken || ''
+		    	apiToken: window.quietlyWP.apiToken || '',
+		    	debug: window.quietlyWP.debug || false,
 		    });
 		    delete window.quietlyWP.apiToken;
 		    // Whitelist
@@ -42,6 +43,15 @@
 				'self',
 				'http://*' + window.quietlyWP.quietlyUrl + '/**'
 			]);
+		});
+		// Simply logging wrapper
+		app.factory('logger', function(config) {
+			var prefix = '[Quietly]';
+			return {
+				log: function() { return (config.debug) ? console.log.apply(console, [prefix].concat(Array.prototype.slice.call(arguments))) : false; },
+				error: function() { return (config.debug) ? console.error.apply(console, [prefix].concat(Array.prototype.slice.call(arguments))) : false; },
+				warn: function() { return (config.debug) ? console.warn.apply(console, [prefix].concat(Array.prototype.slice.call(arguments))) : false; }
+			};
 		});
 	}
 
