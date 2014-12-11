@@ -232,7 +232,7 @@
 		 * @return {Boolean} true if successful.
 		 */
 		$scope.insertIntoEditor = function(text) {
-			if(tinyMCE && !tinyMCE.activeEditor.hidden) {
+			if(tinyMCE && tinyMCE.activeEditor && !tinyMCE.activeEditor.hidden) {
 				tinyMCE.activeEditor.execCommand('mceInsertContent', false, text);
 				return true;
 			} else {

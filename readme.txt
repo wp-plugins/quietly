@@ -3,7 +3,7 @@ Contributors: quietlyapp
 Tags: plugin, social, post, widget, admin, Quietly, list, lists, item, items, embed, slideshow, carousel, love, save, share, publishing, map
 Requires at least: 3.6
 Tested up to: 4.0
-Stable tag: 1.3.4
+Stable tag: 1.3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,9 @@ Having issues with the plugin? Please check out our [troubleshooting guide](http
 3. Easily insert your list or further customize it within your post editor before embedding.
 
 == Changelog ==
+
+= 1.3.5 =
+* Fix error when inserting an embed in Text mode before opening the Visual post editor.
 
 = 1.3.4 =
 * Fix list embed description not showing in excerpts in posts with an embed only.
