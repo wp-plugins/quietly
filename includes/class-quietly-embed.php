@@ -64,7 +64,9 @@ class QuietlyEmbed {
 				$oembed = _wp_oembed_get_object();
 				$oembed = $oembed->fetch( $this->oembed_url, $url );
 				if (is_object($oembed) && property_exists($oembed, 'description')) {
-					array_push( $this->embed_descriptions, '<p>' . $oembed->description . '</p>' );
+					if ( count( $this->embed_descriptions ) === 0 ) {
+						array_push( $this->embed_descriptions, '<p>' . $oembed->description . '</p>' );
+					}
 				}
 			} else {
 				$embed = '';
@@ -82,6 +84,9 @@ class QuietlyEmbed {
 	public function flag_excerpt( $text = '' ) {
 		$this->is_excerpt = true;
 		$this->embed_descriptions = array();
+		$content = get_the_content('');
+		$content = apply_filters( 'the_content', $content );
+		$this->is_excerpt = false;
 		return apply_filters( 'wp_trim_excerpt', $text, $text );
 	}
 
@@ -90,9 +95,8 @@ class QuietlyEmbed {
 	 * @param    string     $text    The excerpt text.
 	 */
 	public function unflag_excerpt( $text = '' ) {
-		$this->is_excerpt = false;
 		// Show list description if excerpt is empty
-		if ( $text === '') {
+		if ( trim( $text ) === '') {
 			foreach ( $this->embed_descriptions as $embed) {
 				$text .= $embed;
 			}
