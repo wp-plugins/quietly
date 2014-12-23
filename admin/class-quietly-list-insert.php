@@ -43,14 +43,14 @@ class QuietlyListInsert {
 	 * Enqueues list insert scripts.
 	 */
 	public function enqueue_scripts() {
-		$screen = get_current_screen()->id;
+		$screen = get_current_screen()->base;
 		$api_token = QuietlyOptions::get_option( 'api_token' );
 		if ( ! empty( $api_token ) ) {
 			$has_token = 'true';
 		} else {
 			$has_token = 'false';
 		}
-		if ( in_array( $screen, $this->post_screens ) ) {
+		if ( $screen === 'post' ) {
 			wp_register_script( QUIETLY_WP_SLUG . '-admin-angular', QUIETLY_WP_PATH_ABS . 'admin/js/quietly-angular.js', array(), QUIETLY_WP_VERSION, true );
 			wp_register_script( QUIETLY_WP_SLUG . '-admin-api', QUIETLY_WP_PATH_ABS . 'admin/js/quietly-api.js', array(), QUIETLY_WP_VERSION, true );
 			wp_register_script( QUIETLY_WP_SLUG . '-admin-list-insert', QUIETLY_WP_PATH_ABS . 'admin/js/quietly-list-insert.js', array(), QUIETLY_WP_VERSION, true );
