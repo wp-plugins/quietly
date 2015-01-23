@@ -3,7 +3,7 @@ Contributors: quietlyapp
 Tags: plugin, social, post, widget, admin, Quietly, list, lists, item, items, embed, slideshow, carousel, love, save, share, publishing, map
 Requires at least: 3.6
 Tested up to: 4.1
-Stable tag: 2.0.0
+Stable tag: 2.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,7 +49,7 @@ Having issues with the plugin? Please check out our [troubleshooting guide](http
 
 == Changelog ==
 
-= 2.0.1 =
+= 2.0.2 =
 * Custom embed settings are now saved via the Quietly API instead of stored as lengthy URL parameters.
 * Quick embeds (non customized) now default to the users last known saved embed settings.
 * Added additional final slide customization options to publishing options screen.
