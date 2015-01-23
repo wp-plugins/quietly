@@ -29,7 +29,7 @@
 			// Config
 		    $provide.constant('config', {
 		    	pluginUrl: window.quietlyWP.pluginUrl,
-		    	quietlyUrl: '//' + window.quietlyWP.quietlyUrl,
+		    	quietlyUrl: 'https://' + window.quietlyWP.quietlyUrl,
 		    	apiUrl: window.quietlyWP.apiUrl,
 		    	siteUrl: window.location.protocol + '//' + window.location.hostname + ((window.location.port !== 80 && window.location.port > 0) ? ':' + window.location.port : ''),
 		    	nonce: window.quietlyWP.nonce,
@@ -41,7 +41,8 @@
 		    // Whitelist
 		    $sceDelegateProvider.resourceUrlWhitelist([
 				'self',
-				'http://*' + window.quietlyWP.quietlyUrl + '/**'
+				'http://*' + window.quietlyWP.quietlyUrl + '/**',
+				'https://*' + window.quietlyWP.quietlyUrl + '/**'
 			]);
 		});
 		// Simply logging wrapper

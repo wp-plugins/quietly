@@ -25,7 +25,7 @@
 	app.controller('ListInsertCtrl', function($scope, $filter, config, api, logger) {
 
 		var logPrefix = '[Quietly List Insert] ',
-			codeTemplate = 'http:' + config.quietlyUrl + '/list/share/$1',
+			codeTemplate = config.quietlyUrl + '/list/share/$1',
 			publishingOptionsUrl = config.quietlyUrl + '/publishing/',
 			loginUrl = config.quietlyUrl + '/api_token_login?api_token=' + config.apiToken + '&url=',
 			listPlaceholder = config.pluginUrl + 'images/empty.png',
@@ -94,37 +94,6 @@
 		};
 
 		/**
-		 * Parse embed settings saved on Quietly.
-		 * @param {string} settings - The settings string.
-		 */
-		$scope.parseSettings = function(settings) {
-			var params = [],
-				param = [],
-				typeId = 0,
-				i = 0;
-			params = settings.split('/');
-			if (params[0].length !== 1) {
-				params.unshift('0');
-			}
-			typeId = parseInt(params[0], 10) || 0;
-			for (i = 1; i < params.length; i++) {
-				if (typeId === (i - 1)) {
-					param = params[i].split('?');
-					if (param.length > 1) {
-						$scope.settings.embedType = param[0];
-						$scope.settings.params = param[1];
-					} else {
-						// Fallback for old settings string
-						$scope.settings.embedType = 'Embed';
-						$scope.settings.params = param[0];
-					}
-					break;
-				}
-			}
-			logger.log('Parsing settings:', settings);
-		};
-
-		/**
 		 * Opens the modal.
 		 */
 		$scope.open = function(refresh){
@@ -146,6 +115,7 @@
 						$scope.options.error = 'unknown';
 						return;
 					}
+
 					// Parse lists model
 					$scope.lists = data.data.lists;
 					angular.forEach($scope.lists, function(list) {
@@ -159,9 +129,8 @@
 					$scope.member._thumbnailImage = $scope.member.thumbnailImage || profilePlaceholder;
 					$scope.member._url = ($scope.member.memberId) ? config.quietlyUrl + '/' + $scope.member.memberId : '#';
 					// Parse settings model
-					if (data.data.settings && data.data.settings.value) {
-						$scope.parseSettings(data.data.settings.value);
-						$scope.settings.params = encodeURIComponent($scope.settings.params);
+					if (data.data.settings && data.data.settings.length) {
+						$scope.settings.params = encodeURIComponent('&' + data.data.settings);
 					}
 					// Settle down
 					$scope.options.isProcessing = false;
@@ -199,8 +168,11 @@
 		 * @return {Object} The selected list model.
 		 */
 		$scope.selectList = function(list) {
+			// Generate a settingsId here
+			var settingsId = Math.random().toString(36).slice(10);
+
 			$scope.selectedList = list || null;
-			$scope.options.embedCode = '[embed]' + ($scope.selectedList._code || '') + (($scope.settings.params) ? '?' + $scope.settings.params : '') + '[/embed]';
+			$scope.options.embedCode = '[embed]' + ($scope.selectedList._code || '') + '?settingsId=' + settingsId + (($scope.settings.params) ? $scope.settings.params : '') + '[/embed]';
 			return $scope.selectedList;
 		};
 
@@ -263,7 +235,7 @@
 			controller: 'ListInsertCtrl',
 			link: function(scope, element) {
 
-				var origin = new RegExp('^https?:' + config.quietlyUrl.replace(/\//g, '\\/')),
+				var origin = config.quietlyUrl,
 					$window = $(window),
 					$body = $('body'),
 					$container = $('.quietly-wp-list-insert__container', element),
@@ -289,7 +261,7 @@
 				function handlePostMessage(event) {
 					var evt = event.originalEvent,
 						data = null;
-					if (origin.test(evt.origin)) {
+					if (origin === evt.origin) {
 						if (evt.data) {
 							try {
 								data = JSON.parse(evt.data);
@@ -301,11 +273,11 @@
 						if (data.action &&
 							data.action === 'code' &&
 							data.code &&
-							data.code.length &&
-							data.settings &&
-							data.settings.length) {
+							data.code.length) {
 							scope.options.embedCode = data.code;
-							scope.parseSettings(data.settings);
+							if (data.settings) {
+								scope.settings.params = data.settings;
+							}
 							scope.$apply();
 						}
 					}

@@ -3,7 +3,7 @@ Contributors: quietlyapp
 Tags: plugin, social, post, widget, admin, Quietly, list, lists, item, items, embed, slideshow, carousel, love, save, share, publishing, map
 Requires at least: 3.6
 Tested up to: 4.1
-Stable tag: 1.3.6
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,7 +20,7 @@ The Quietly WordPress plug-in allows you to quickly and easily embed your Quietl
 * Customize with ease – easily insert the list or further customize it within your post editor before embedding.
 * Preview in post – in WordPress 4.0, Quietly lists will show a visual preview right within your post editor.
 
-Lean more about Quietly [here](http://www.quiet.ly/pro). Or email [welovefeedback@quiet.ly](mailto:welovefeedback@quiet.ly) to get in touch with us.
+Learn more about Quietly [here](http://www.quiet.ly/pro). Or email [welovefeedback@quiet.ly](mailto:welovefeedback@quiet.ly) to get in touch with us.
 
 == Installation ==
 
@@ -49,15 +49,20 @@ Having issues with the plugin? Please check out our [troubleshooting guide](http
 
 == Changelog ==
 
+= 2.0.0 =
+* Custom embed settings are now saved via the Quietly API instead of stored as lengthy URL parameters.
+* Quick embeds (non customized) now default to the user's last known saved embed settings.
+* Added additional final slide customization options to publishing options screen.
+
 = 1.3.6 =
-* Fix list insert model broken when adding or editing a custom post type.
+* Fixed list insert model broken when adding or editing a custom post type.
 
 = 1.3.5 =
-* Fix error when inserting an embed in Text mode before opening the Visual post editor.
+* Fixed error when inserting an embed in Text mode before opening the Visual post editor.
 
 = 1.3.4 =
-* Fix list embed description not showing in excerpts in posts with an embed only.
-* Fix embed not inserting in post editor when switching from Text to Visual mode or vice-versa.
+* Fixed list embed description not showing in excerpts in posts with an embed only.
+* Fixed embed not inserting in post editor when switching from Text to Visual mode or vice-versa.
 
 = 1.3.3 =
 * Remember last settings when inserting an embed.
