@@ -49,9 +49,9 @@ Having issues with the plugin? Please check out our [troubleshooting guide](http
 
 == Changelog ==
 
-= 2.0.0 =
+= 2.0.1 =
 * Custom embed settings are now saved via the Quietly API instead of stored as lengthy URL parameters.
-* Quick embeds (non customized) now default to the user's last known saved embed settings.
+* Quick embeds (non customized) now default to the users last known saved embed settings.
 * Added additional final slide customization options to publishing options screen.
 
 = 1.3.6 =
