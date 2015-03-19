@@ -6,7 +6,7 @@
 		<div class="quietly-wp-list-insert__overlay"
 			ng-click="close()"></div>
 		<div class="quietly-wp-list-insert__container">
-			<a href class="media-modal-close" title="Close"
+			<a href class="quietly-wp-list-insert__btn-close media-modal-close" title="Close"
 				ng-click="close()">
 				<span class="media-modal-icon"></span>
 			</a>
@@ -20,16 +20,17 @@
 							ng-show="member">
 							<img ng-src="{{ member._thumbnailImage }}" class="quietly-wp-list-insert__user-avatar">
 							<div class="quietly-wp-list-insert__user-body">
-								Showing lists from <a href="{{ member._url }}" class="quietly-wp-list-insert__user-name" target="_blank" alt="View Quietly profile">{{ member.name }}</a>
+								<a href="{{ member._url }}" class="quietly-wp-list-insert__user-name" target="_blank" alt="View Quietly profile">{{ member.name }}</a>
 								<br>
 								<a href="<?php echo admin_url( 'admin.php?page=' . QUIETLY_WP_SLUG . '#change_token' ); ?>">Not you?</a>
 							</div>
 						</div>
-						<h1 class="quietly-wp-list-insert__header-title">Insert Quietly List</h1>
+						<h1 class="quietly-wp-list-insert__header-title">Insert Quietly Content</h1>
 						<p class="quietly-wp-list-insert__description">
-							Choose a list to insert from your Quietly account.
+							Choose content to insert from your Quietly account.
 						</p>
-						<div ng-show="lists && lists.length">
+						<div class="quietly-wp-list-insert__header-bar"
+							ng-show="lists && lists.length">
 							<!-- Filters -->
 							<div class="quietly-wp-list-insert__filters">
 								<span class="quietly-wp-list-insert__filters-count">
@@ -49,7 +50,7 @@
 							</div>
 							<!-- Search -->
 							<form name="quietlyListInsertSearch" class="quietly-wp-list-insert__search">
-								<input name="search" class="quietly-wp-list-insert__search-input" placeholder="Search lists..."
+								<input name="search" class="quietly-wp-list-insert__search-input" placeholder="Search content..."
 									ng-model="options.listsSearch">
 							</form>
 						</div>
@@ -68,14 +69,14 @@
 							<!-- Processing -->
 							<p class="quietly-wp-list-insert__grid-none"
 								ng-show="options.isProcessing">
-								Hang on there, we're getting your lists...
+								Hang on there, we're getting your content...
 								<br><br>
 								<img src="<?php echo QUIETLY_WP_PATH_ABS . 'images/throbber-gray.gif'; ?>">
 							</p>
 							<!-- Failure -->
 							<p class="quietly-wp-list-insert__grid-none"
 								ng-show="options.error === 'unknown'">
-								Bummer, there was a problem getting your awesome lists.
+								Bummer, there was a problem getting your awesome content.
 								<br><br>
 								<a href class="button-large button-primary button"
 									ng-click="open()">
@@ -94,10 +95,10 @@
 							<!-- No lists -->
 							<p class="quietly-wp-list-insert__grid-none"
 								ng-show="options.isLoaded && !lists.length">
-								You don't have any lists on Quietly.
+								You don't have any content on Quietly.
 								<br><br>
 								<a href="<?php echo '//' . QUIETLY_WP_URL . '/list/create'; ?>" target="_blank" class="button-large button-primary button">
-									Compose a List
+									Compose a Content
 								</a>
 								<a href class="button-large button"
 									ng-click="open(true)">
@@ -130,7 +131,7 @@
 				<div class="quietly-wp-list-insert__body"
 					ng-show="options.view === 'customize'">
 					<div class="quietly-wp-list-insert__header">
-						<h1 class="quietly-wp-list-insert__header-title">Customize Quietly Embed</h1>
+						<h1 class="quietly-wp-list-insert__header-title">Edit Quietly Content</h1>
 					</div>
 					<div class="quietly-wp-list-insert__grid--locked quietly-wp-list-insert__grid quietly-wp-list-insert__stretch">
 						<iframe width="100%" height="100%" frameborder="0" allowfullscreen
@@ -145,12 +146,12 @@
 							ng-disabled="!selectedList"
 							ng-click="customizeList()"
 							ng-show="options.view === 'insert'">
-							Customize
+							Edit/Customize
 						</button>
 						<button class="quietly-wp-list-insert__btn-primary button-large button-primary button"
 							ng-disabled="!selectedList"
 							ng-click="insertList()">
-							Insert {{ settings.embedType }}
+							Insert Content
 						</button>
 						<button class="quietly-wp-list-insert__btn-primary button-large button"
 							ng-click="open()"

@@ -1,5 +1,5 @@
 /**
- * Quietly List Insert Module
+ * Quietly List (Content) Insert Module
  */
 /* global tinyMCE */
 
@@ -22,11 +22,12 @@
 	/**
 	 * List Insert Controller
 	 */
-	app.controller('ListInsertCtrl', function($scope, $filter, config, api, logger) {
+	app.controller('ListInsertCtrl', function($scope, $filter, config, api) {
 
 		var logPrefix = '[Quietly List Insert] ',
+			settingsId = 1,
 			codeTemplate = config.quietlyUrl + '/list/share/$1',
-			publishingOptionsUrl = config.quietlyUrl + '/publishing/',
+			publishingOptionsUrl = config.quietlyUrl + '/list/',
 			loginUrl = config.quietlyUrl + '/api_token_login?api_token=' + config.apiToken + '&url=',
 			listPlaceholder = config.pluginUrl + 'images/empty.png',
 			profilePlaceholder = config.pluginUrl + 'images/placeholder-profile.png';
@@ -76,7 +77,6 @@
 		 * @type {Object}
 		 */
 		$scope.settings = {
-			embedType: 'Embed',
 			params: ''
 		};
 
@@ -115,7 +115,6 @@
 						$scope.options.error = 'unknown';
 						return;
 					}
-
 					// Parse lists model
 					$scope.lists = data.data.lists;
 					angular.forEach($scope.lists, function(list) {
@@ -129,8 +128,9 @@
 					$scope.member._thumbnailImage = $scope.member.thumbnailImage || profilePlaceholder;
 					$scope.member._url = ($scope.member.memberId) ? config.quietlyUrl + '/' + $scope.member.memberId : '#';
 					// Parse settings model
-					if (data.data.settings && data.data.settings.length) {
-						$scope.settings.params = encodeURIComponent('&' + data.data.settings);
+					if (data.data.settings && data.data.settings.length &&
+						data.data.settings.type) {
+						$scope.settings.params = encodeURIComponent('&type=' + data.data.settings.type);
 					}
 					// Settle down
 					$scope.options.isProcessing = false;
@@ -159,7 +159,7 @@
 		 * @return {string} The url.
 		 */
 		$scope.getPublishingOptionsUrl = function() {
-			return loginUrl + encodeURIComponent(publishingOptionsUrl + $scope.selectedList.listId + '?is_wordpress=true&origin=' + config.siteUrl);
+			return loginUrl + encodeURIComponent(publishingOptionsUrl + $scope.selectedList.listId + '/edit?origin=' + config.siteUrl);
 		};
 
 		/**
@@ -168,11 +168,12 @@
 		 * @return {Object} The selected list model.
 		 */
 		$scope.selectList = function(list) {
-			// Generate a settingsId here
-			var settingsId = Math.random().toString(36).slice(10);
-
+			var params = $scope.settings.params || '';
 			$scope.selectedList = list || null;
-			$scope.options.embedCode = '[embed]' + ($scope.selectedList._code || '') + '?settingsId=' + settingsId + (($scope.settings.params) ? $scope.settings.params : '') + '[/embed]';
+			if (list.listType) {
+				params = encodeURIComponent('&type=' + list.listType);
+			}
+			$scope.options.embedCode = '[embed]' + ($scope.selectedList._code || '') + '?settingsId=' + settingsId + params + '[/embed]';
 			return $scope.selectedList;
 		};
 

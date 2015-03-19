@@ -20,7 +20,7 @@ if ( ! empty( $has_token ) ) {
 	<!-- Empty API token notice -->
 	<div class="quietly-wp-admin__notice updated">
 		<p>
-			Get your Quietly API token and connect the plugin with your Quietly account to easily access and insert your lists while writing a post.
+			Get your Quietly API token and connect the plugin with your Quietly account to easily access and insert your content while writing a post.
 		</p>
 		<p>
 			<a href class="quietly-btn-get-api-token button-primary button-large button"><?php /* TRANSLATORS: settings */ _e( 'Get API Token', QUIETLY_WP_SLUG ); ?></a>
@@ -42,30 +42,30 @@ if ( ! empty( $has_token ) ) {
 	<!-- Onboarding -->
 	<div id="quietly-blk-onboarding" class="quietly-wp-admin__notice updated" style="display: none">
 		<p>
-			Nice work! You can now insert Quietly lists right into your post editor.
+			Nice work! You can now insert Quietly content right into your post editor.
 		</p>
 		<div class="quietly-wp-admin__notice-step">
 			<img src="<?php echo QUIETLY_WP_PATH_ABS; ?>/images/instruction-1.png" width="220" height="150">
 			<p>
-				<strong>1.</strong> Click the <strong>Insert Quietly List</strong> button from the editor toolbar.
+				<strong>1.</strong> Click the <strong>Add Quietly Content</strong> button from the editor toolbar.
 			</p>
 		</div><!--
 		--><div class="quietly-wp-admin__notice-step">
 			<img src="<?php echo QUIETLY_WP_PATH_ABS; ?>/images/instruction-2.png" width="220" height="150">
 			<p>
-				<strong>2.</strong> Browse or search your Quietly lists.
+				<strong>2.</strong> Browse or search your Quietly content.
 			</p>
 		</div><!--
 		--><div class="quietly-wp-admin__notice-step">
 			<img src="<?php echo QUIETLY_WP_PATH_ABS; ?>/images/instruction-3.png" width="220" height="150">
 			<p class="quietly-wp-admin__notice-step-caption">
-				<strong>3.</strong> Customize your list to match your WordPress site.
+				<strong>3.</strong> Edit and customize your content to match your WordPress site.
 			</p>
 		</div><!--
 		--><div class="quietly-wp-admin__notice-step">
 			<img src="<?php echo QUIETLY_WP_PATH_ABS; ?>/images/instruction-4.png" width="220" height="150">
 			<p class="quietly-wp-admin__notice-step-caption">
-				<strong>4. </strong>Click <strong>Insert</strong> to finish. In WordPress 4.0+, your lists will show a visual preview.
+				<strong>4. </strong>Click <strong>Insert Content</strong> to finish. In WordPress 4.0+, your content will show a visual preview.
 			</p>
 		</div>
 		<p>

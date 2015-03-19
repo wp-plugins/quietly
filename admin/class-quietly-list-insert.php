@@ -76,7 +76,7 @@ class QuietlyListInsert {
 	 * @param    string    $context    The context HTML.
 	 */
 	public function add_insert_button( $context ) {
-		$context .= '<a href id="quietly-wp-btn-insert-list" class="button" title="' . /* TRANSLATORS: post editor */ _( 'Add Quietly List' ) . '"><img src="' . QUIETLY_WP_PATH_ABS . 'images/btn-insert.png" class="quietly-wp-admin__btn-add" />' . /* TRANSLATORS: post editor */ _( 'Add Quietly List' ) . '</a>';
+		$context .= '<a href id="quietly-wp-btn-insert-list" class="button" title="' . /* TRANSLATORS: post editor */ _( 'Add Quietly Content' ) . '"><img src="' . QUIETLY_WP_PATH_ABS . 'images/btn-insert.png" class="quietly-wp-admin__btn-add" />' . /* TRANSLATORS: post editor */ _( 'Add Quietly Content' ) . '</a>';
 		return $context;
 	}
 
