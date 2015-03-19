@@ -148,7 +148,7 @@ class QuietlySettings {
 				if ( $options[ $key ] === false) {
 					$options[ $key ] = true;
 					if ( $is_options_screen ) {
-						add_settings_error( QUIETLY_WP_SLUG_OPTIONS, 'updated-show-description-in-excerpts', /* TRANSLATORS: settings */ __( 'List description will now show in post excerpts with a Quietly embed.', QUIETLY_WP_SLUG ), 'updated' );
+						add_settings_error( QUIETLY_WP_SLUG_OPTIONS, 'updated-show-description-in-excerpts', /* TRANSLATORS: settings */ __( 'Quietly content description will now show in post excerpts with a Quietly embed.', QUIETLY_WP_SLUG ), 'updated' );
 					}
 				}
 			} else {
@@ -156,7 +156,7 @@ class QuietlySettings {
 				if ( $options[ $key ] === true ) {
 					$options[ $key ] = false;
 					if ( $is_options_screen ) {
-						add_settings_error( QUIETLY_WP_SLUG_OPTIONS, 'updated-show-description-in-excerpts', /* TRANSLATORS: settings */ __( 'List description will no longer show in post excerpts with a Quietly embed.', QUIETLY_WP_SLUG ), 'updated' );
+						add_settings_error( QUIETLY_WP_SLUG_OPTIONS, 'updated-show-description-in-excerpts', /* TRANSLATORS: settings */ __( 'Quietly content description will no longer show in post excerpts with a Quietly embed.', QUIETLY_WP_SLUG ), 'updated' );
 					}
 				}
 			}
@@ -185,9 +185,9 @@ class QuietlySettings {
 	 */
 	public function display_field_show_description_in_excerpts() {
 ?>
-		<input type="checkbox" name="<?php echo QUIETLY_WP_SLUG_OPTIONS; ?>[show_description_in_excerpts]"<?php if ( QuietlyOptions::get_option( 'show_description_in_excerpts' ) ) echo ' checked'; ?>> <?php /* TRANSLATORS: settings */ _e( 'Automatically show list description in your post excerpts', QUIETLY_WP_SLUG ); ?>
+		<input type="checkbox" name="<?php echo QUIETLY_WP_SLUG_OPTIONS; ?>[show_description_in_excerpts]"<?php if ( QuietlyOptions::get_option( 'show_description_in_excerpts' ) ) echo ' checked'; ?>> <?php /* TRANSLATORS: settings */ _e( 'Automatically show Quietly content description in your post excerpts', QUIETLY_WP_SLUG ); ?>
 		<p class="description">
-			<?php /* TRANSLATORS: settings */ _e( 'Enabling this option will show the Quietly list description in place of an excerpt if the embed is the only content.', QUIETLY_WP_SLUG ); ?>
+			<?php /* TRANSLATORS: settings */ _e( 'Enabling this option will show the Quietly content description in place of an excerpt if the embed is the only content.', QUIETLY_WP_SLUG ); ?>
 		</p>
 <?php
 	}
