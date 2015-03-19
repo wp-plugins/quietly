@@ -34,8 +34,7 @@ Learn more about Quietly [here](http://www.quiet.ly). Or email [welovefeedback@q
 Quietly allows publishers to easily create lightweight content for their audiences in the form of customized slideshows, media carousels, and maps. Once the content is created in Quietly, they can embed it directly into their web properties. Other benefits include analytic insights, search engine optimization, and headline optimization. Our fully integrated WordPress plugin makes it even easier to engage your readers, increase traffic, and reward your readers. We’re developing new tools and formats every month.
 
 = How do I customize my embed widget? =
-* __From Quietly:__ Go to the content that you wish to embed, and click on _Customize and Embed_ to see publishing options. Once your desired settings have been set, select the _WordPress_ tab in the top right hand corner, then copy and paste the embed code into your site.
-* __Within Wordpress:__ Find the content by clicking the _Insert Quietly Content_ button in the editor toolbar. Once selected, click _Customize_ to customize your content. Then click _Insert_ to embed the content into your post.
+Find the content by clicking the _Insert Quietly Content_ button in the editor toolbar. Once selected, click _Edit/Customize_ to customize your content. Then click _Insert Content_ to embed the content into your post.
 
 To learn more about customization, check out our [knowledge base](https://quietly.uservoice.com/knowledgebase/articles/393995-customizing-your-carousel).
 
