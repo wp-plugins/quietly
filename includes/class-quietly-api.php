@@ -38,7 +38,7 @@ class QuietlyAPI {
 	 */
 	public function __construct() {
 
-		$this->api_url = 'http://' . QUIETLY_WP_URL . '/api/v12/';
+		$this->api_url = 'http://' . QUIETLY_WP_URL . '/api/v14/';
 		$this->prefix = 'wp_ajax_' . QUIETLY_WP_SLUG . '_api_';
 
 		// Verify user API token
@@ -66,13 +66,13 @@ class QuietlyAPI {
 			// Set default error message
 			switch ($code) {
 				case 400:
-					$message = 'The data sent to the server was invalid.';
+					$message = /* translators: API error message */ __( 'The data sent to the server was invalid.', QUIETLY_WP_SLUG );
 					break;
 				case 403:
-					$message = 'You do not have permission to make this request.';
+					$message = /* translators: API error message */ __( 'You do not have permission to make this request.', QUIETLY_WP_SLUG );
 					break;
 				default:
-					$message = 'An unrecognized error has occured.';
+					$message = /* translators: API error message */ __( 'An unrecognized error has occured.', QUIETLY_WP_SLUG );
 					break;
 			}
 		}
@@ -103,7 +103,7 @@ class QuietlyAPI {
 
 		// Check if API token exists
 		if ( empty( $this->api_token ) ) {
-			return $this->get_error_response( 403, 'The API token is invalid.' );
+			return $this->get_error_response( 403, /* translators: API error message */ __( 'The API token is invalid.', QUIETLY_WP_SLUG ) );
 		}
 
 		// Create a default header for sending API token and merge with options

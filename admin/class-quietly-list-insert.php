@@ -65,7 +65,8 @@ class QuietlyListInsert {
 					'nonce' => wp_create_nonce( QUIETLY_WP_SLUG . '_api_call' ),
 					'hasToken' => $has_token,
 					'apiToken' => $api_token,
-					'debug' => QUIETLY_WP_DEBUG ? true : false
+					'debug' => QUIETLY_WP_DEBUG ? true : false,
+					'i18n' => array()
 				)
 			);
 		}
@@ -76,7 +77,7 @@ class QuietlyListInsert {
 	 * @param    string    $context    The context HTML.
 	 */
 	public function add_insert_button( $context ) {
-		$context .= '<a href id="quietly-wp-btn-insert-list" class="button" title="' . /* TRANSLATORS: post editor */ _( 'Add Quietly Content' ) . '"><img src="' . QUIETLY_WP_PATH_ABS . 'images/btn-insert.png" class="quietly-wp-admin__btn-add" />' . /* TRANSLATORS: post editor */ _( 'Add Quietly Content' ) . '</a>';
+		$context .= '<a href id="quietly-wp-btn-insert-list" class="button" title="' . /* translators: post editor insert button title */ esc_attr__( 'Add Quietly Content', QUIETLY_WP_SLUG ) . '"><img src="' . QUIETLY_WP_PATH_ABS . 'images/btn-insert.png" class="quietly-wp-admin__btn-add" />' . /* translators: post editor insert button label */ __( 'Add Quietly Content', QUIETLY_WP_SLUG ) . '</a>';
 		return $context;
 	}
 

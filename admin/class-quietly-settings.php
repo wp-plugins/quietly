@@ -9,7 +9,7 @@ class QuietlySettings {
 
 	/**
 	 * Settings screen id.
-	 * @var string
+	 * @var    string
 	 */
 	protected $settings_screen = '';
 
@@ -42,16 +42,16 @@ class QuietlySettings {
 		// Add API token field
 		add_settings_field(
 			'api_token',
-			'Quietly API Token',
+			/* translators: settings field title */ __( 'Quietly API Token', QUIETLY_WP_SLUG ),
 			array( $this, 'display_field_api_token' ),
 			QUIETLY_WP_SLUG,
 			'quietly_settings_general'
 		);
 
-		// Add descript in excerpts field
+		// Add description in excerpts field
 		add_settings_field(
 			'show_description_in_excerpts',
-			'Post Excerpts',
+			/* translators: settings field title */  __( 'Post Excerpts' , QUIETLY_WP_SLUG ),
 			array( $this, 'display_field_show_description_in_excerpts' ),
 			QUIETLY_WP_SLUG,
 			'quietly_settings_general'
@@ -104,7 +104,7 @@ class QuietlySettings {
 		}
 	}
 
-	/*
+	/**
 	 * Validates and returns user's inputted options.
 	 * @param     array    $input    User inputs for plugin options.
 	 * @return    array    Validated options.
@@ -123,19 +123,19 @@ class QuietlySettings {
 					// Update value
 					if ( $options[ $key ] != $input[ $key ] ) {
 						if ( $is_options_screen ) {
-							add_settings_error( QUIETLY_WP_SLUG_OPTIONS, 'updated-api-token', /* TRANSLATORS: settings */ __( 'API token updated.', QUIETLY_WP_SLUG ), 'updated' );
+							add_settings_error( QUIETLY_WP_SLUG_OPTIONS, 'updated-api-token', /* translators: settings changed message */ __( 'API token updated.', QUIETLY_WP_SLUG ), 'updated' );
 						}
 						$options[ $key ] = esc_html( $input[ $key ] );
 					}
 				} else if ( strlen ( $input[ $key ] ) > 0) {
 					// Invalid
 					if ( $is_options_screen ) {
-						add_settings_error( QUIETLY_WP_SLUG_OPTIONS, 'invalid-api-token', /* TRANSLATORS: settings */ __( 'You have entered an invalid API token.', QUIETLY_WP_SLUG ) );
+						add_settings_error( QUIETLY_WP_SLUG_OPTIONS, 'invalid-api-token', /* translators: settings changed message */ __( 'You have entered an invalid API token.', QUIETLY_WP_SLUG ) );
 					}
 				} else {
 					// Unset
 					if ( $is_options_screen ) {
-						add_settings_error( QUIETLY_WP_SLUG_OPTIONS, 'updated-api-token', /* TRANSLATORS: settings */ __( 'API token has been removed. Certain features of the plugin are disabled.', QUIETLY_WP_SLUG ), 'updated' );
+						add_settings_error( QUIETLY_WP_SLUG_OPTIONS, 'updated-api-token', /* translators: settings changed message */ __( 'API token has been removed. Certain features of the plugin are disabled.', QUIETLY_WP_SLUG ), 'updated' );
 					}
 					$options[ $key ] = '';
 				}
@@ -145,10 +145,10 @@ class QuietlySettings {
 			$key = 'show_description_in_excerpts';
 			if ( isset( $input[ $key ] ) ) {
 				// Turn on
-				if ( $options[ $key ] === false) {
+				if ( $options[ $key ] == false) {
 					$options[ $key ] = true;
 					if ( $is_options_screen ) {
-						add_settings_error( QUIETLY_WP_SLUG_OPTIONS, 'updated-show-description-in-excerpts', /* TRANSLATORS: settings */ __( 'Quietly content description will now show in post excerpts with a Quietly embed.', QUIETLY_WP_SLUG ), 'updated' );
+						add_settings_error( QUIETLY_WP_SLUG_OPTIONS, 'updated-show-description-in-excerpts', /* translators: settings changed message */ __( 'Quietly content description will now show in post excerpts with a Quietly embed.', QUIETLY_WP_SLUG ), 'updated' );
 					}
 				}
 			} else {
@@ -156,7 +156,7 @@ class QuietlySettings {
 				if ( $options[ $key ] === true ) {
 					$options[ $key ] = false;
 					if ( $is_options_screen ) {
-						add_settings_error( QUIETLY_WP_SLUG_OPTIONS, 'updated-show-description-in-excerpts', /* TRANSLATORS: settings */ __( 'Quietly content description will no longer show in post excerpts with a Quietly embed.', QUIETLY_WP_SLUG ), 'updated' );
+						add_settings_error( QUIETLY_WP_SLUG_OPTIONS, 'updated-show-description-in-excerpts', /* translators: settings changed message */ __( 'Quietly content description will no longer show in post excerpts with a Quietly embed.', QUIETLY_WP_SLUG ), 'updated' );
 					}
 				}
 			}
@@ -170,24 +170,32 @@ class QuietlySettings {
 	 */
 	public function display_field_api_token() {
 ?>
-		<input id="quietly-input-api-token" type="text" name="<?php echo QUIETLY_WP_SLUG_OPTIONS; ?>[api_token]" value="<?php echo QuietlyOptions::get_option( 'api_token' ) ?>" size="30" placeholder="Enter API token here...">
+		<input id="quietly-input-api-token" type="text" name="<?php echo QUIETLY_WP_SLUG_OPTIONS; ?>[api_token]" value="<?php echo QuietlyOptions::get_option( 'api_token' ) ?>" size="30" placeholder="<?php /* translators: settings api token placeholder */ _e( 'Enter API token here...', QUIETLY_WP_SLUG ); ?>">
 		<p class="description">
-			<?php /* TRANSLATORS: settings */ _e( 'This token is required for the plugin to communicate with your Quietly account. It is not mandatory for displaying a Quietly embed in your posts.', QUIETLY_WP_SLUG ); ?>
+			<?php
+				/* translators: settings api token description */
+				_e( 'This token is required for the plugin to communicate with your Quietly account. It is not mandatory for displaying Quietly content in your posts.', QUIETLY_WP_SLUG );
+			?>
 		</p>
 		<p>
-			<a href class="quietly-btn-get-api-token button"><?php /* TRANSLATORS: settings */ _e( 'Get API Token', QUIETLY_WP_SLUG ); ?></a>
+			<a href class="quietly-btn-get-api-token button">
+				<?php /* translators: settings api token button label */ _e( 'Get API Token', QUIETLY_WP_SLUG ); ?>
+			</a>
 		</p>
 <?php
 	}
 
 	/**
-	 * Displays the field for the show notifications toggle.
+	 * Displays the field for the description in excerpts toggle.
 	 */
 	public function display_field_show_description_in_excerpts() {
 ?>
-		<input type="checkbox" name="<?php echo QUIETLY_WP_SLUG_OPTIONS; ?>[show_description_in_excerpts]"<?php if ( QuietlyOptions::get_option( 'show_description_in_excerpts' ) ) echo ' checked'; ?>> <?php /* TRANSLATORS: settings */ _e( 'Automatically show Quietly content description in your post excerpts', QUIETLY_WP_SLUG ); ?>
+		<input type="checkbox" name="<?php echo QUIETLY_WP_SLUG_OPTIONS; ?>[show_description_in_excerpts]"<?php if ( QuietlyOptions::get_option( 'show_description_in_excerpts' ) ) echo ' checked'; ?>> <?php /* translators: settings post excerpt description label */ _e( 'Automatically show Quietly content description in your post excerpts', QUIETLY_WP_SLUG ); ?>
 		<p class="description">
-			<?php /* TRANSLATORS: settings */ _e( 'Enabling this option will show the Quietly content description in place of an excerpt if the embed is the only content.', QUIETLY_WP_SLUG ); ?>
+			<?php
+				/* translators: settings post excerpts description info */
+				_e( 'Enabling this option will show the Quietly content description in place of an excerpt if the embed is the only content.', QUIETLY_WP_SLUG );
+			?>
 		</p>
 <?php
 	}

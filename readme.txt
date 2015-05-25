@@ -1,21 +1,21 @@
 === Quietly ===
 Contributors: quietlyapp
-Tags: plugin, social, post, widget, admin, Quietly, list, lists, item, items, embed, slideshow, carousel, love, save, share, publishing, map, content
+Tags: plugin, social, post, widget, admin, Quietly, list, lists, item, items, embed, slideshow, media carousel, love, share, publishing, map, cards, article, content
 Requires at least: 3.6
-Tested up to: 4.1.1
-Stable tag: 2.1.0
+Tested up to: 4.2.2
+Stable tag: 2.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Embed Quietly content on your Wordpress site.
+Embed Quietly content on your WordPress site.
 
 == Description ==
 
-The Quietly WordPress plug-in allows you to quickly and easily embed your Quietly content (e.g. beautiful slideshows, maps, etc) into your WordPress website.
+The Quietly WordPress plug-in allows you to quickly and easily embed your Quietly content (e.g. slideshows, maps, media carousels, cards) into your WordPress website.
 
 <strong>Features</strong>
 
-* Engage your readers – increase the visual nature of your articles with a beautiful slideshow or map widget.
+* Engage your readers – increase the visual nature of your articles with a beautiful slideshow, interactive media carousel, list-based cards, or map widget.
 * Improve your workflow – quickly browse and select content from your Quietly account while writing your post.
 * Make further edits - modify or add to your existing content straight from within WordPress.
 * Customize with ease – easily insert the content or further customize it within your post editor before embedding.
@@ -26,29 +26,29 @@ Learn more about Quietly [here](http://www.quiet.ly). Or email [welovefeedback@q
 == Installation ==
 
 1. Upload the `quietly` folder to the `/wp-content/plugins/` directory.
-1. Activate the plugin from the `Plugins` menu in the WordPress dashboard.
+2. Activate the plugin from the `Plugins` menu in the WordPress dashboard.
 
 == Frequently Asked Questions ==
 
 = What is Quietly? =
-Quietly allows publishers to easily create lightweight content for their audiences in the form of customized slideshows, media carousels, and maps. Once the content is created in Quietly, they can embed it directly into their web properties. Other benefits include analytic insights, search engine optimization, and headline optimization. Our fully integrated WordPress plugin makes it even easier to engage your readers, increase traffic, and reward your readers. We’re developing new tools and formats every month.
+Quietly’s suite of publishing tools allows publishers to easily create lightweight content for their audiences in the form of customized slideshows, media carousels, cards, and maps. Once the content is created in Quietly, they can embed it directly into their web properties. Our fully integrated WordPress plugin makes it even easier to engage your readers, increase traffic, and reward your readers.
 
 = How do I customize my embed widget? =
 Find the content by clicking the _Insert Quietly Content_ button in the editor toolbar. Once selected, click _Edit/Customize_ to customize your content. Then click _Insert Content_ to embed the content into your post.
-
-To learn more about customization, check out our [knowledge base](https://quietly.uservoice.com/knowledgebase/articles/393995-customizing-your-carousel).
-
-= Troubleshooting =
-Having issues with the plugin? Please check out our [troubleshooting guide](https://quietly.uservoice.com/knowledgebase/articles/394005-troubleshooting).
 
 == Screenshots ==
 
 1. A Quietly slideshow widget in action.
 2. Display your list of locations in an interactive map.
 3. Display your content as an interactive media carousel.
-3. Easily insert your content or further customize it within your post editor before embedding.
+4. Display your content as cards in a vertical list.
+5. Easily insert your content or further customize it within your post editor before embedding.
 
 == Changelog ==
+
+= 2.2.0 =
+* Added "Create Content" button to allow new content creation right within WordPress.
+* Added Quietly analytics for paid users.
 
 = 2.1.0 =
 * Improved customization UI. You can now edit your Quietly content as well!

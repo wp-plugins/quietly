@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Quietly
  * Plugin URI:  http://wordpress.org/plugins/quietly
- * Description: The Quietly WP plug-in allows you to quickly and easily embed your Quietly content (e.g. beautiful slideshows, maps, etc) into your WordPress website.
- * Version:     2.1.0
+ * Description: The Quietly WP plug-in allows you to quickly and easily embed your Quietly content (e.g. slideshows, media carousels, maps, cards) into your WordPress website.
+ * Version:     2.2.0
  * Author:      Quietly Media, Inc.
  * Author URI:  http://quiet.ly
  * License:     GPL-2.0+
@@ -16,7 +16,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Plugin constants
-define( 'QUIETLY_WP_VERSION', '2.1.0' );
+define( 'QUIETLY_WP_VERSION', '2.2.0' );
 define( 'QUIETLY_WP_SLUG', 'quietly' );
 define( 'QUIETLY_WP_SLUG_OPTIONS', QUIETLY_WP_SLUG . '_options' );
 define( 'QUIETLY_WP_URL_DOMAIN', 'quiet.ly' );
@@ -30,6 +30,7 @@ define( 'QUIETLY_WP_DEBUG', false );
 require_once( 'includes/class-quietly.php' );
 require_once( 'includes/class-quietly-options.php' );
 require_once( 'includes/class-quietly-embed.php' );
+require_once( 'includes/class-quietly-analytics.php' );
 require_once( 'includes/class-quietly-api.php' );
 require_once( 'admin/class-quietly-admin.php' );
 require_once( 'admin/class-quietly-settings.php' );
