@@ -132,21 +132,28 @@ div.quietly-wp-admin__activation-notice {
   padding: 15px; }
 
 .quietly-wp-list-insert__header-title {
-  font-size: 28px;
-  font-weight: normal;
-  margin-top: 16px;
+  margin-top: 4px;
   margin-bottom: 0;
-  line-height: 35px; }
+  font-size: 16px;
+  line-height: 21px; }
   @media only screen and (max-width: 560px) {
     .quietly-wp-list-insert__header-title {
       font-size: 21px;
       line-height: 26px; } }
 
+.quietly-wp-list-insert__header-bar {
+  clear: both;
+  margin-top: 16px; }
+
+.quietly-wp-list-insert__btn-close {
+  top: 12px; }
+
 .quietly-wp-list-insert__description {
-  font-size: 14px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 12px;
   font-style: italic;
-  color: #999999;
-  margin-bottom: 1em; }
+  color: #999999; }
 
 .quietly-wp-list-insert__search {
   width: 50%;

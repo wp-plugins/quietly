@@ -1,5 +1,5 @@
 /**
- * Quietly List Insert Module
+ * Quietly List (Content) Insert Module
  */
 /* global tinyMCE */
 
@@ -22,11 +22,12 @@
 	/**
 	 * List Insert Controller
 	 */
-	app.controller('ListInsertCtrl', function($scope, $filter, config, api, logger) {
+	app.controller('ListInsertCtrl', function($scope, $filter, config, api) {
 
 		var logPrefix = '[Quietly List Insert] ',
+			settingsId = 1,
 			codeTemplate = config.quietlyUrl + '/list/share/$1',
-			publishingOptionsUrl = config.quietlyUrl + '/publishing/',
+			publishingOptionsUrl = config.quietlyUrl + '/list/',
 			loginUrl = config.quietlyUrl + '/api_token_login?api_token=' + config.apiToken + '&url=',
 			listPlaceholder = config.pluginUrl + 'images/empty.png',
 			profilePlaceholder = config.pluginUrl + 'images/placeholder-profile.png';
@@ -40,6 +41,7 @@
 			hasToken: config.hasToken,
 			isProcessing: false,
 			isLoaded: false,
+			isOutdated: false,
 			error: '',
 			view: 'insert',
 			embedCode: '',
@@ -76,7 +78,6 @@
 		 * @type {Object}
 		 */
 		$scope.settings = {
-			embedType: 'Embed',
 			params: ''
 		};
 
@@ -95,13 +96,15 @@
 
 		/**
 		 * Opens the modal.
+		 * @param {Boolean} [forceRefresh] - Forces refresh of content from Quietly.
 		 */
-		$scope.open = function(refresh){
+		$scope.open = function(forceRefresh){
 			$scope.options.show = true;
 			$scope.options.view = 'insert';
 			$scope.options.error = '';
-			if (refresh && refresh === true) {
+			if (forceRefresh === true || $scope.options.isOutdated) {
 				$scope.options.isLoaded = false;
+				$scope.options.isOutdated= false;
 			}
 			if ($scope.options.hasToken && !$scope.options.isLoaded && !$scope.options.isProcessing) {
 				$scope.options.isProcessing = true;
@@ -115,7 +118,6 @@
 						$scope.options.error = 'unknown';
 						return;
 					}
-
 					// Parse lists model
 					$scope.lists = data.data.lists;
 					angular.forEach($scope.lists, function(list) {
@@ -129,8 +131,9 @@
 					$scope.member._thumbnailImage = $scope.member.thumbnailImage || profilePlaceholder;
 					$scope.member._url = ($scope.member.memberId) ? config.quietlyUrl + '/' + $scope.member.memberId : '#';
 					// Parse settings model
-					if (data.data.settings && data.data.settings.length) {
-						$scope.settings.params = encodeURIComponent('&' + data.data.settings);
+					if (data.data.settings && data.data.settings.length &&
+						data.data.settings.type) {
+						$scope.settings.params = encodeURIComponent('&type=' + data.data.settings.type);
 					}
 					// Settle down
 					$scope.options.isProcessing = false;
@@ -155,11 +158,18 @@
 		};
 
 		/**
-		 * Gets the Quietly publishing options url.
-		 * @return {string} The url.
+		 * Returns the content editor iframe URL.
+		 * @return {String} The url.
 		 */
-		$scope.getPublishingOptionsUrl = function() {
-			return loginUrl + encodeURIComponent(publishingOptionsUrl + $scope.selectedList.listId + '?is_wordpress=true&origin=' + config.siteUrl);
+		$scope.getFrameURL = function() {
+			var url = publishingOptionsUrl;
+			if ($scope.selectedList) {
+				url += $scope.selectedList.listId + '/edit?origin=';
+			} else {
+				url += 'create?origin=';
+			}
+			url += config.siteUrl;
+			return loginUrl + encodeURIComponent(url);
 		};
 
 		/**
@@ -168,11 +178,12 @@
 		 * @return {Object} The selected list model.
 		 */
 		$scope.selectList = function(list) {
-			// Generate a settingsId here
-			var settingsId = Math.random().toString(36).slice(10);
-
+			var params = $scope.settings.params || '';
 			$scope.selectedList = list || null;
-			$scope.options.embedCode = '[embed]' + ($scope.selectedList._code || '') + '?settingsId=' + settingsId + (($scope.settings.params) ? $scope.settings.params : '') + '[/embed]';
+			if (list.listType) {
+				params = encodeURIComponent('&type=' + list.listType);
+			}
+			$scope.options.embedCode = '[embed]' + ($scope.selectedList._code || '') + '?settingsId=' + settingsId + params + '[/embed]';
 			return $scope.selectedList;
 		};
 
@@ -185,13 +196,10 @@
 			if (list) {
 				$scope.selectList(list);
 			}
-			if (!$scope.selectedList) {
-				console.error(logPrefix + 'Invalid list.');
-			}
 			if (!$scope.options.embedCode) {
 				console.error(logPrefix + 'List is missing its embed code.');
 				$scope.close();
-				return;
+				return null;
 			}
 			$scope.insertIntoEditor($scope.options.embedCode);
 			$scope.close();
@@ -199,8 +207,17 @@
 		};
 
 		/**
+		 * Creates a new content in editor view.
+		 */
+		$scope.createContent = function() {
+			$scope.selectedList = null;
+			$scope.options.embedCode = '';
+			$scope.options.view = 'customize';
+		};
+
+		/**
 		 * Inserts a text into the active TinyMCE editor.
-		 * @param {string} text - The text.
+		 * @param {String} text - The text.
 		 * @return {Boolean} true if successful.
 		 */
 		$scope.insertIntoEditor = function(text) {
@@ -270,14 +287,15 @@
 						if (!data) {
 							return;
 						}
-						if (data.action &&
-							data.action === 'code' &&
-							data.code &&
-							data.code.length) {
+						if (data.action === 'code' &&
+							data.code && data.code.length) {
 							scope.options.embedCode = data.code;
 							if (data.settings) {
 								scope.settings.params = data.settings;
 							}
+							scope.$apply();
+						} else if (data.action === 'refresh') {
+							scope.options.isOutdated = true;
 							scope.$apply();
 						}
 					}

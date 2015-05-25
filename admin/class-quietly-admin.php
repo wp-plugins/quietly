@@ -62,7 +62,7 @@ class QuietlyAdmin {
 	 * @return    array
 	 */
 	public function add_plugin_action_link( $links ) {
-		$settings_link = '<a href="' . admin_url( 'admin.php?page=' . QUIETLY_WP_SLUG ) . '">' . /* TRANSLATORS: plugin */ __( 'Settings', QUIETLY_WP_SLUG ) . '</a>';
+		$settings_link = '<a href="' . admin_url( 'admin.php?page=' . QUIETLY_WP_SLUG ) . '">' . /* translators: plugin */ __( 'Settings', QUIETLY_WP_SLUG ) . '</a>';
 		array_push( $links, $settings_link );
 		return $links;
 	}

@@ -15,19 +15,19 @@ class QuietlyEmbed {
 
 	/**
 	 * Quietly embed code regex.
-	 * @var string
+	 * @var    string
 	 */
 	protected $embed_regex = '';
 
 	/**
 	 * Determines if the current output is a post excerpt.
-	 * @var boolean
+	 * @var    boolean
 	 */
 	protected $is_excerpt = false;
 
 	/**
 	 * List of embed descriptions to output in place of excerpt.
-	 * @var array
+	 * @var    array
 	 */
 	protected $embed_descriptions = array();
 
