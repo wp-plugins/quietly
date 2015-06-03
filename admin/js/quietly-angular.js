@@ -36,6 +36,7 @@
 		    	hasToken: (window.quietlyWP.hasToken === 'true'),
 		    	apiToken: window.quietlyWP.apiToken || '',
 		    	debug: window.quietlyWP.debug || false,
+		    	i18n: window.quietlyWP.i18n
 		    });
 		    delete window.quietlyWP.apiToken;
 		    // Whitelist

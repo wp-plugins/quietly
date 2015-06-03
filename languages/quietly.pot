@@ -1,0 +1,396 @@
+# Copyright (C) 2015 Quietly Media, Inc.
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Quietly 3.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/quietly-wordpress\n"
+"POT-Creation-Date: 2015-06-03 18:57:05+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.5.2\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+
+#: admin/class-quietly-admin.php:65 trunk/admin/class-quietly-admin.php:65
+#. translators: plugin
+msgid "Settings"
+msgstr ""
+
+#: admin/class-quietly-content-insert.php:67
+#. translators: insert content confirmation
+msgid ""
+"Inserting this will replace your post title and post content. Are you sure "
+"you want to insert?"
+msgstr ""
+
+#: admin/class-quietly-content-insert.php:79
+#: trunk/admin/class-quietly-content-insert.php:79
+#. translators: post editor insert button title
+#. translators: post editor insert button label
+msgid "Add Quietly Content"
+msgstr ""
+
+#: admin/class-quietly-settings.php:45
+#: trunk/admin/class-quietly-settings.php:45
+#. translators: settings field title
+msgid "Quietly API Token"
+msgstr ""
+
+#: admin/class-quietly-settings.php:54
+#: trunk/admin/class-quietly-settings.php:54
+#. translators: settings field title
+msgid "Post Excerpts"
+msgstr ""
+
+#: admin/class-quietly-settings.php:126
+#: trunk/admin/class-quietly-settings.php:126
+#. translators: settings changed message
+msgid "API token updated."
+msgstr ""
+
+#: admin/class-quietly-settings.php:133
+#: trunk/admin/class-quietly-settings.php:133
+#. translators: settings changed message
+msgid "You have entered an invalid API token."
+msgstr ""
+
+#: admin/class-quietly-settings.php:138
+#: trunk/admin/class-quietly-settings.php:138
+#. translators: settings changed message
+msgid "API token has been removed. Certain features of the plugin are disabled."
+msgstr ""
+
+#: admin/class-quietly-settings.php:151
+#: trunk/admin/class-quietly-settings.php:151
+#. translators: settings changed message
+msgid ""
+"Quietly content description will now show in post excerpts with a Quietly "
+"embed."
+msgstr ""
+
+#: admin/class-quietly-settings.php:159
+#: trunk/admin/class-quietly-settings.php:159
+#. translators: settings changed message
+msgid ""
+"Quietly content description will no longer show in post excerpts with a "
+"Quietly embed."
+msgstr ""
+
+#: admin/class-quietly-settings.php:173
+#: trunk/admin/class-quietly-settings.php:173
+#. translators: settings api token placeholder
+msgid "Enter API token here..."
+msgstr ""
+
+#: admin/class-quietly-settings.php:177
+#: trunk/admin/class-quietly-settings.php:177
+#. translators: settings api token description
+msgid ""
+"This token is required for the plugin to communicate with your Quietly "
+"account. It is not mandatory for displaying Quietly content in your posts."
+msgstr ""
+
+#: admin/class-quietly-settings.php:182 admin/views/quietly-settings.php:37
+#: admin/views/quietly-settings.php:56
+#: trunk/admin/class-quietly-settings.php:182
+#: trunk/admin/views/quietly-settings.php:37
+#: trunk/admin/views/quietly-settings.php:56
+#. translators: settings api token button label
+#. translators: settings get api token button label
+msgid "Get API Token"
+msgstr ""
+
+#: admin/class-quietly-settings.php:193
+#: trunk/admin/class-quietly-settings.php:193
+#. translators: settings post excerpt description label
+msgid "Automatically show Quietly content description in your post excerpts"
+msgstr ""
+
+#: admin/class-quietly-settings.php:197
+#: trunk/admin/class-quietly-settings.php:197
+#. translators: settings post excerpts description info
+msgid ""
+"Enabling this option will show the Quietly content description in place of "
+"an excerpt if the embed is the only content."
+msgstr ""
+
+#: admin/views/quietly-activation-notice.php:11
+#: trunk/admin/views/quietly-activation-notice.php:11
+#. translators: first time activation title; %s = <strong></strong>
+msgid "The %sQuietly%s plugin has been activated!"
+msgstr ""
+
+#: admin/views/quietly-activation-notice.php:17
+#: trunk/admin/views/quietly-activation-notice.php:17
+#. translators: first time activation description
+msgid ""
+"Connect the plugin with your Quietly account to easily access and insert "
+"Quietly content while writing a post."
+msgstr ""
+
+#: admin/views/quietly-activation-notice.php:24
+#: trunk/admin/views/quietly-activation-notice.php:24
+#. translators: first time activation connect button label
+msgid "Connect with Quietly"
+msgstr ""
+
+#: admin/views/quietly-content-insert-modal.php:9
+#: trunk/admin/views/quietly-content-insert-modal.php:9
+#. translators: content insert modal close button tooltip
+msgid "Close"
+msgstr ""
+
+#: admin/views/quietly-content-insert-modal.php:26
+#: trunk/admin/views/quietly-content-insert-modal.php:26
+#. translators: list insert modal log out link label
+msgid "Not you?"
+msgstr ""
+
+#: admin/views/quietly-content-insert-modal.php:33
+#: trunk/admin/views/quietly-content-insert-modal.php:33
+#. translators: content insert modal customize view title
+msgid "Edit Quietly Content"
+msgstr ""
+
+#: admin/views/quietly-content-insert-modal.php:39
+#: trunk/admin/views/quietly-content-insert-modal.php:39
+#. translators: list insert modal browser view info
+msgid ""
+"Preview or edit content from your Quietly account, then insert it into your "
+"article."
+msgstr ""
+
+#: admin/views/quietly-content-insert-modal.php:50
+#: trunk/admin/views/quietly-content-insert-modal.php:50
+#. translators: list insert modal no api token message
+msgid "Please connect with your Quietly account in the plugin settings."
+msgstr ""
+
+#: admin/views/quietly-content-insert-modal.php:54
+#: trunk/admin/views/quietly-content-insert-modal.php:54
+#. translators: list insert modal
+msgid "View Plugin Settings"
+msgstr ""
+
+#: admin/views/quietly-content-insert-modal.php:61
+#: trunk/admin/views/quietly-content-insert-modal.php:61
+#. translators: list insert modal getting data message
+msgid "Hang on, we're connecting with Quietly..."
+msgstr ""
+
+#: admin/views/quietly-content-insert-modal.php:70
+#: trunk/admin/views/quietly-content-insert-modal.php:70
+#. translators: list insert modal api error message
+msgid "Bummer, there was a problem getting your awesome content."
+msgstr ""
+
+#: admin/views/quietly-content-insert-modal.php:75
+#: trunk/admin/views/quietly-content-insert-modal.php:75
+#. translators: list insert modal refresh button label
+msgid "Try Again"
+msgstr ""
+
+#: admin/views/quietly-content-insert-modal.php:82
+#: trunk/admin/views/quietly-content-insert-modal.php:82
+#. translators: list insert modal invalid api token message
+msgid "Your API token is invalid. Please obtain a new one."
+msgstr ""
+
+#: admin/views/quietly-content-insert-modal.php:86
+#: trunk/admin/views/quietly-content-insert-modal.php:86
+#. translators: list insert modal api token button label
+msgid "Get New API Token"
+msgstr ""
+
+#: admin/views/quietly-content-insert-modal.php:103
+#: trunk/admin/views/quietly-content-insert-modal.php:103
+#. translators: content insert modal footer button label
+msgid "Insert Content"
+msgstr ""
+
+#: admin/views/quietly-content-insert-modal.php:107
+#: trunk/admin/views/quietly-content-insert-modal.php:107
+#. translators: content insert modal footer button label
+msgid "View All Content"
+msgstr ""
+
+#: admin/views/quietly-content-insert-modal.php:111
+#: trunk/admin/views/quietly-content-insert-modal.php:111
+#. translators: content insert modal footer button label
+msgid "Cancel"
+msgstr ""
+
+#: admin/views/quietly-settings.php:20
+#: trunk/admin/views/quietly-settings.php:20
+#. translators: settings page title
+msgid "Quietly Settings"
+msgstr ""
+
+#: admin/views/quietly-settings.php:30
+#: trunk/admin/views/quietly-settings.php:30
+#. translators: settings api connect message
+msgid ""
+"Get your Quietly API token and connect the plugin with your Quietly account "
+"to easily access and insert your content while writing a post."
+msgstr ""
+
+#: admin/views/quietly-settings.php:49
+#: trunk/admin/views/quietly-settings.php:49
+#. translators: settings change account message
+msgid ""
+"To change the Quietly account associated this plugin, please obtain a new "
+"API token for the account you wish to use."
+msgstr ""
+
+#: admin/views/quietly-settings.php:68
+#: trunk/admin/views/quietly-settings.php:68
+#. translators: settings onboarding message
+msgid "Nice work! You can now insert Quietly content right into your post editor."
+msgstr ""
+
+#: admin/views/quietly-settings.php:77
+#: trunk/admin/views/quietly-settings.php:77
+#. translators: settings onboarding step 1; %s = <strong></strong>
+msgid "%s1.%s Click the %sAdd Quietly Content%s button from the editor toolbar."
+msgstr ""
+
+#: admin/views/quietly-settings.php:90
+#: trunk/admin/views/quietly-settings.php:90
+#. translators: settings onboarding step 2; %s = <strong></strong>
+msgid "%s2.%s Browse or search your Quietly content."
+msgstr ""
+
+#: admin/views/quietly-settings.php:103
+#: trunk/admin/views/quietly-settings.php:103
+#. translators: settings onboarding step 3; %s = <strong></strong>
+msgid "%s1.%s Edit and customize your content to match your WordPress site."
+msgstr ""
+
+#: admin/views/quietly-settings.php:116
+#: trunk/admin/views/quietly-settings.php:116
+#. translators: settings onboarding step 4; %s = <strong></strong>
+msgid ""
+"%s1.%s Click %sInsert Content%s to finish. In WordPress 4.0+, your content "
+"will show a visual preview."
+msgstr ""
+
+#: admin/views/quietly-settings.php:127
+#: trunk/admin/views/quietly-settings.php:127
+#. translators: settings new post button label
+msgid "Start Writing"
+msgstr ""
+
+#: admin/views/quietly-settings.php:133
+#: trunk/admin/views/quietly-settings.php:133
+#. translators: settings view all posts button label
+msgid "View All Posts"
+msgstr ""
+
+#: admin/views/quietly-settings.php:156
+#: trunk/admin/views/quietly-settings.php:156
+#. translators: settings footer; %s = <a></a>
+msgid ""
+"Like our plugin? %sLeave a rating%s and let the world know! We would be "
+"forever grateful :)"
+msgstr ""
+
+#: admin/views/quietly-settings.php:164
+#: trunk/admin/views/quietly-settings.php:164
+#. translators: settings footer; %s = <a></a>
+msgid ""
+"Found a bug or have a feature request? Shoot us an email at "
+"%swelovefeedback@quiet.ly%s."
+msgstr ""
+
+#: admin/views/quietly-settings.php:172
+#: trunk/admin/views/quietly-settings.php:172
+#. translators: settings footer
+msgid "Resources:"
+msgstr ""
+
+#: admin/views/quietly-settings.php:175
+#: trunk/admin/views/quietly-settings.php:175
+#. translators: settings footer
+msgid "Troubleshooting Guide"
+msgstr ""
+
+#: admin/views/quietly-settings.php:178
+#: trunk/admin/views/quietly-settings.php:178
+#. translators: settings footer
+msgid "Knowledge Base"
+msgstr ""
+
+#: admin/views/quietly-settings.php:181
+#: trunk/admin/views/quietly-settings.php:181
+#. translators: settings footer
+msgid "Plugin Website"
+msgstr ""
+
+#: admin/views/quietly-settings.php:189
+#: trunk/admin/views/quietly-settings.php:189
+#. translators: settings footer
+msgid "Plugin version:"
+msgstr ""
+
+#: includes/class-quietly-api.php:69 trunk/includes/class-quietly-api.php:69
+#. translators: API error message
+msgid "The data sent to the server was invalid."
+msgstr ""
+
+#: includes/class-quietly-api.php:72 trunk/includes/class-quietly-api.php:72
+#. translators: API error message
+msgid "You do not have permission to make this request."
+msgstr ""
+
+#: includes/class-quietly-api.php:75 trunk/includes/class-quietly-api.php:75
+#. translators: API error message
+msgid "An unrecognized error has occured."
+msgstr ""
+
+#: includes/class-quietly-api.php:106 trunk/includes/class-quietly-api.php:106
+#. translators: API error message
+msgid "The API token is invalid."
+msgstr ""
+
+#: trunk/admin/class-quietly-content-insert.php:67
+#. translators: insert content confirmation
+msgid ""
+"Inserting this story will replace your post title and post content. Are you "
+"sure you want to insert?"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Quietly"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/plugins/quietly"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"The Quietly WP plug-in allows you to quickly and easily embed your Quietly "
+"content (e.g. slideshows, media carousels, maps, cards) into your WordPress "
+"website."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Quietly Media, Inc."
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://quiet.ly"
+msgstr ""

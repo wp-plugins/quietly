@@ -12,7 +12,8 @@ class QuietlyOptions {
 	 */
 	public static $options_default = array(
 		'api_token' => '',
-		'show_description_in_excerpts' => true
+		'show_description_in_excerpts' => true,
+		'enable_analytics' => true
 	);
 
 	/**

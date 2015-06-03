@@ -11,14 +11,16 @@ class Quietly {
 	 * Initializes the plugin.
 	 */
 	public function __construct() {
+		QuietlyOptions::create_options();
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 		if ( is_admin() ) {
 			$admin = new QuietlyAdmin();
 			$settings = new QuietlySettings();
-			$list_insert = new QuietlyListInsert();
+			$content_insert = new QuietlyContentInsert();
 			$api = new QuietlyAPI();
 		}
 		$embed = new QuietlyEmbed();
+		$analytics = new QuietlyAnalytics();
 	}
 
 	/**
@@ -27,7 +29,6 @@ class Quietly {
 	 */
 	public static function activate( $network_wide ) {
 		add_option(  QUIETLY_WP_SLUG . '_admin_activation_notice', 'true' );
-		QuietlyOptions::create_options();
 	}
 
 	/**
@@ -55,7 +56,7 @@ class Quietly {
 		$domain = QUIETLY_WP_SLUG;
 		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
 		load_textdomain( $domain, WP_LANG_DIR . '/' . $domain . '/' . $domain . '-' . $locale . '.mo' );
-		load_plugin_textdomain( $domain, false, QUIETLY_WP_PATH_DIR . '/lang/' );
+		load_plugin_textdomain( $domain, false, QUIETLY_WP_PATH_DIR . '/languages/' );
 	}
 
 }
