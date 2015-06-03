@@ -3,7 +3,7 @@ Contributors: quietlyapp
 Tags: plugin, social, post, widget, admin, Quietly, list, lists, item, items, embed, slideshow, media carousel, love, share, publishing, map, cards, article, content
 Requires at least: 3.6
 Tested up to: 4.2.2
-Stable tag: 2.2.0
+Stable tag: 3.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,9 @@ Find the content by clicking the _Insert Quietly Content_ button in the editor t
 5. Easily insert your content or further customize it within your post editor before embedding.
 
 == Changelog ==
+
+= 3.0.0=
+* Access your Quietly content and publications from within WordPress.
 
 = 2.2.0 =
 * Added "Create Content" button to allow new content creation right within WordPress.

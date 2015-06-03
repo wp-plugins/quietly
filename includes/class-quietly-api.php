@@ -30,7 +30,7 @@ class QuietlyAPI {
 	 * @var array
 	 */
 	private $endpoints = array(
-		'get_lists'
+		'get_member'
 	);
 
 	/**
@@ -195,15 +195,15 @@ class QuietlyAPI {
 	}
 
 	/**
-	 * Returns all the lists from current member.
+	 * Returns current member data.
 	 * @return    string    JSON encoded string of the AJAX response.
 	 */
-	public function get_lists() {
+	public function get_member() {
 		$request_data = $this->get_post_data();
 		if ( false === $request_data ) {
 			$response = $this->get_error_response( 400 );
 		} else {
-			$response = $this->remote_request( 'members/me/lean_lists', array(
+			$response = $this->remote_request( 'members/me', array(
 				'method' => 'GET'
 			), $request_data['nonce'] );
 		}

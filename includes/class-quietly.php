@@ -16,7 +16,7 @@ class Quietly {
 		if ( is_admin() ) {
 			$admin = new QuietlyAdmin();
 			$settings = new QuietlySettings();
-			$list_insert = new QuietlyListInsert();
+			$content_insert = new QuietlyContentInsert();
 			$api = new QuietlyAPI();
 		}
 		$embed = new QuietlyEmbed();

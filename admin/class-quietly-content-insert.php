@@ -1,10 +1,10 @@
 <?php
 /**
- * Quietly Insert List Class
+ * Quietly Content Insert Class
  * @package Quietly
  */
 
-class QuietlyListInsert {
+class QuietlyContentInsert {
 
 	/**
 	 * Whitelisted screen hooks.
@@ -23,7 +23,7 @@ class QuietlyListInsert {
 	public function __construct() {
 		// Insert views and assets
 		foreach ($this->post_screens as $screen) {
-			add_action( 'admin_footer-' . $screen . '.php', array( $this, 'add_insert_list_modal' ) );
+			add_action( 'admin_footer-' . $screen . '.php', array( $this, 'add_insert_content_modal' ) );
 		}
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_action( 'media_buttons_context', array( $this, 'add_insert_button' ) );
@@ -33,14 +33,14 @@ class QuietlyListInsert {
 	}
 
 	/**
-	 * Adds the insert list modal view.
+	 * Adds the insert content modal view.
 	 */
-	public function add_insert_list_modal() {
-		Quietly::display_view( 'admin/views/quietly-list-insert-modal.php' );
+	public function add_insert_content_modal() {
+		Quietly::display_view( 'admin/views/quietly-content-insert-modal.php' );
 	}
 
 	/**
-	 * Enqueues list insert scripts.
+	 * Enqueues content insert scripts.
 	 */
 	public function enqueue_scripts() {
 		$screen = get_current_screen()->base;
@@ -51,12 +51,9 @@ class QuietlyListInsert {
 			$has_token = 'false';
 		}
 		if ( $screen === 'post' ) {
-			wp_register_script( QUIETLY_WP_SLUG . '-admin-angular', QUIETLY_WP_PATH_ABS . 'admin/js/quietly-angular.js', array(), QUIETLY_WP_VERSION, true );
-			wp_register_script( QUIETLY_WP_SLUG . '-admin-api', QUIETLY_WP_PATH_ABS . 'admin/js/quietly-api.js', array(), QUIETLY_WP_VERSION, true );
-			wp_register_script( QUIETLY_WP_SLUG . '-admin-list-insert', QUIETLY_WP_PATH_ABS . 'admin/js/quietly-list-insert.js', array(), QUIETLY_WP_VERSION, true );
-			wp_enqueue_script( QUIETLY_WP_SLUG . '-admin-angular' );
-			wp_enqueue_script( QUIETLY_WP_SLUG . '-admin-api' );
-			wp_enqueue_script( QUIETLY_WP_SLUG . '-admin-list-insert' );
+			wp_enqueue_script( QUIETLY_WP_SLUG . '-admin-angular', QUIETLY_WP_PATH_ABS . 'admin/js/quietly-angular.js', array(), QUIETLY_WP_VERSION, true );
+			wp_enqueue_script( QUIETLY_WP_SLUG . '-admin-api', QUIETLY_WP_PATH_ABS . 'admin/js/quietly-api.js', array(), QUIETLY_WP_VERSION, true );
+			wp_enqueue_script( QUIETLY_WP_SLUG . '-admin-content-insert', QUIETLY_WP_PATH_ABS . 'admin/js/quietly-content-insert.js', array(), QUIETLY_WP_VERSION, true );
 			wp_localize_script( QUIETLY_WP_SLUG . '-admin-angular', QUIETLY_WP_SLUG . 'WP',
 				array(
 					'pluginUrl' => QUIETLY_WP_PATH_ABS,
@@ -66,18 +63,20 @@ class QuietlyListInsert {
 					'hasToken' => $has_token,
 					'apiToken' => $api_token,
 					'debug' => QUIETLY_WP_DEBUG ? true : false,
-					'i18n' => array()
+					'i18n' => array(
+						'insertContentConfirmStory' => /* translators: insert content confirmation */ _( 'Inserting this will replace your post title and post content. Are you sure you want to insert?' )
+					)
 				)
 			);
 		}
 	}
 
 	/**
-	 * Adds an insert list button above the editor.
+	 * Adds an insert content button above the editor.
 	 * @param    string    $context    The context HTML.
 	 */
 	public function add_insert_button( $context ) {
-		$context .= '<a href id="quietly-wp-btn-insert-list" class="button" title="' . /* translators: post editor insert button title */ esc_attr__( 'Add Quietly Content', QUIETLY_WP_SLUG ) . '"><img src="' . QUIETLY_WP_PATH_ABS . 'images/btn-insert.png" class="quietly-wp-admin__btn-add" />' . /* translators: post editor insert button label */ __( 'Add Quietly Content', QUIETLY_WP_SLUG ) . '</a>';
+		$context .= '<a href id="quietly-wp-btn-insert-content" class="button" title="' . /* translators: post editor insert button title */ esc_attr__( 'Add Quietly Content', QUIETLY_WP_SLUG ) . '"><img src="' . QUIETLY_WP_PATH_ABS . 'images/btn-insert.png" class="quietly-wp-admin__btn-add" />' . /* translators: post editor insert button label */ __( 'Add Quietly Content', QUIETLY_WP_SLUG ) . '</a>';
 		return $context;
 	}
 
