@@ -35,7 +35,7 @@ class QuietlyEmbed {
 	 * Initializes the object.
 	 */
 	public function __construct() {
-		$this->oembed_url = 'http://' . QUIETLY_WP_URL . '/oembed';
+		$this->oembed_url = 'https://' . QUIETLY_WP_URL . '/oembed';
 		$this->embed_regex = '#https?://(beta\.|www\.)?' . QUIETLY_WP_URL_DOMAIN . '/list/.*#i';
 		// Register embed handler
 		wp_embed_register_handler( QUIETLY_WP_SLUG, $this->embed_regex, array( $this, 'embed_register_handler' ) );
